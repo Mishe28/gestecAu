@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TeacherComponent } from './teacher/teacher.component';
-import { TeacherRoutingModule } from './teacher-routing.module';
 
 
 
@@ -12,6 +11,6 @@ import { TeacherRoutingModule } from './teacher-routing.module';
   ],
   imports: [
     CommonModule,
-    TeacherRoutingModule  ]
+  ]
 })
 export class TeacherModule { }

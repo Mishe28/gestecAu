@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { subscribeOn } from 'rxjs';
+import { SidebarComponent } from './layout/sidebar/sidebar/sidebar.component';
 import { CareerComponent } from './pages/component-career/career/career.component';
 import { ClassroomComponent } from './pages/component-classroom/classroom/classroom.component';
 import { CourseComponent } from './pages/component-course/course/course.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:'subject', component: SubjectComponent},
   {path:'user', component: UserComponent},
   {path:'classroom', component: ClassroomComponent},
+  {path:'sidebar', component: SidebarComponent},
 ];
 
 
