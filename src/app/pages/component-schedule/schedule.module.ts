@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ScheduleComponent } from './schedule/schedule.component';
+import { ScheduleComponent } from '../schedule/schedule.component';
 
 
 

@@ -12,4 +12,4 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CommonModule
   ]
 })
-export class NotFoundModule { }
+export class OtherModule { }
