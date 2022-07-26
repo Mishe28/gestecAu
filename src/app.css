@@ -11008,11 +11008,12 @@ a.list-group-item {
 .navbar input {
   direction: ltr;
 }
+/*
 #root,
 body,
 html {
   height: 100%;
-}
+}*/
 body {
   opacity: 1 !important;
   overflow-y: scroll;

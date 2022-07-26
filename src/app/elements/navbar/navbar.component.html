@@ -1,15 +1,17 @@
 <nav class="navbar navbar-expand navbar-light navbar-bg"
-  style="border-bottom: 1px #c7d0d8 solid ; padding: 0px; position: fixed; right: 0; width: 100%;">
+  style="border-bottom: 1px #c7d0d8 solid ; padding: 0px; position: fixed; right: 0; width: 100%; z-index:1030 ;">
 
   <a class="sidebar-brand" href="#">
     <img src="https://i.postimg.cc/7Y0V0SR8/GESTION-AULAS-LOGO-removebg-preview.png" height="45" alt="" srcset="">
     <span style="font-size: 20px;">GestecAu</span>
   </a>
+  <!--
   <a class="sidebar-toggle js-sidebar-toggle" style="margin-left:10px;">
     <i class="hamburger align-self-center"></i>
   </a>
+-->
 
-  <h4 style="margin: 0px;">Dashboard</h4>
+  <h4 style="margin-left: 10px;">Dashboard</h4>
 
   <div class="navbar-collapse collapse">
     <ul class="navbar-nav navbar-align">
@@ -20,11 +22,11 @@
             class="avatar rounded me-2" alt="Charles Hall" />
         </a>
         <div class="dropdown-menu dropdown-menu-end">
-          <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i>
+          <a class="dropdown-item" href="#/pages/user-profile"><i class="align-middle me-1" data-feather="user"></i>
             Perfil</a>
-          <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="settings"></i> Ajustes</a>
+          <a class="dropdown-item" href="#/pages/settings"><i class="align-middle me-1" data-feather="settings"></i> Ajustes</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="log-in"></i>Cerrar Sesión</a>
+          <a class="dropdown-item" href="#/gestec/login"><i class="align-middle me-1" data-feather="log-in"></i>Cerrar Sesión</a>
         </div>
       </li>
     </ul>
