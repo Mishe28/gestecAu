@@ -1,0 +1,141 @@
+body{
+    background-image: url('https://i.postimg.cc/8k0fkZ0S/instalacion2.png');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+#general {
+    height: 100%;
+    background-color: #00000058;
+}
+
+.gestec{
+    font-size: 40px;
+    color: #F6B758;
+    font-weight: 600;
+}
+
+
+a {
+	cursor: pointer;
+  transition: all 200ms linear;
+}
+a:hover {
+	text-decoration: none;
+}
+.link {
+    color: #ffffff;
+    font-weight: 100;
+}
+.link:hover {
+  color: #F6B758;
+}
+
+h4 {
+  font-weight: 300;
+  font-size: 23px;
+}
+
+
+.card-3d-wrap {
+  position: relative;
+  width: 440px;
+  max-width: 100%;
+  height: 400px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  margin-top: 60px;
+}
+.card-3d-wrapper {
+  width: 100%;
+  height: 100%;
+  position:absolute;    
+  top: 0;
+  left: 0;  
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition: all 600ms ease-out; 
+}
+.card-front{
+  width: 100%;
+  height: 100%;
+  background-color: #0000008b;
+  border-radius: 4px;
+  left: 0;
+  top: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.center-wrap{
+  position: absolute;
+  width: 100%;
+  padding: 0 35px;
+  top: 50%;
+  left: 0;
+  transform: translate3d(0, -50%, 35px) perspective(100px);
+  z-index: 20;
+  display: block;
+}
+
+
+.form-group{ 
+  position: relative;
+  display: block;
+    margin: 0;
+    padding: 0;
+}
+.form-style {
+    margin-top: 5px;
+  padding-left: 15px;
+  height: 40px;
+  width: 100%;
+  font-weight: 300;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  outline: none;
+  color: #f1f1f1;
+  background-color: transparent;
+  border: solid 2px white;
+}
+.form-style:focus,
+.form-style:active {
+    border: solid 2px #F6B758;
+  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+
+.btn{  
+  border-radius: 2px;
+  height: 40px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 30px;
+  letter-spacing: 1px;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  text-align: center;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+  float: right;
+}
+
+.btn:hover{  
+  background-color: #F6B758;
+  color: #000000;
+}
+
+.login-label{
+    color: #ffffff;
+    font-weight: 200;
+}

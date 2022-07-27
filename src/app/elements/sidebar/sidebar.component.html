@@ -1,0 +1,53 @@
+<nav id="sidebar" class="sidebar js-sidebar">
+  <div class="sidebar-content js-simplebar">
+    <ul class="sidebar-nav">
+      <br>
+      <li class="sidebar-item active">
+        <a class="sidebar-link" href="#/pages/dashboard">
+          <i class="bi bi-speedometer2"></i><span class="align-middle">Dashboard</span>
+        </a>
+      </li>
+
+      <li class="sidebar-item">
+        <a class="sidebar-link" href="#/pages/classroom">
+          <i class="bi bi-house"></i><span class="align-middle">Aulas</span>
+        </a>
+      </li>
+
+      <li class="sidebar-item">
+        <a class="sidebar-link" href="#/pages/career">
+          <i class="bi bi-mortarboard"></i> <span class="align-middle">Carreras</span>
+        </a>
+      </li>
+
+      <li class="sidebar-item">
+        <a class="sidebar-link" href="#/pages/course">
+          <i class="bi bi-person-workspace"></i> <span class="align-middle">Cursos</span>
+        </a>
+      </li>
+
+      <li class="sidebar-item">
+        <a class="sidebar-link" href="#/pages/teacher">
+          <i class="bi bi-file-earmark-person"></i> <span class="align-middle">Docentes</span>
+        </a>
+      </li>
+
+      <li class="sidebar-item">
+        <a class="sidebar-link" href="#/pages/schedule">
+          <i class="bi bi-journal-check"></i> <span class="align-middle">Asignaciones</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  $(function() {
+   $('.sidebar-nav li').click(function(e) {
+       e.preventDefault();
+       var $this = $(this);
+       $this.closest('ul').children('li').removeClass('active');
+       $this.parent().addClass('active');
+   });
+  });
+</script>
