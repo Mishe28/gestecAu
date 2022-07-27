@@ -120,7 +120,7 @@ h1 {
 }
 .h2,
 h2 {
-  font-size: 1.53125rem;
+  font-size: 40px;
 }
 .h3,
 h3 {
@@ -4208,8 +4208,8 @@ fieldset:disabled .btn {
   word-wrap: break-word;
   background-clip: border-box;
   background-color: #fff;
-  border: 0 solid transparent;
-  border-radius: 0.25rem;
+  border: 5px solid #283c4d;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -4239,7 +4239,7 @@ fieldset:disabled .btn {
 }
 .card-body {
   flex: 1 1 auto;
-  padding: 1.25rem;
+  padding: 20px;
 }
 .card-title {
   margin-bottom: 0.5rem;
@@ -10664,8 +10664,12 @@ fieldset:disabled .btn {
 }
 .card-title {
   color: #939ba2;
-  font-size: 0.925rem;
+  font-size: 15px;
   font-weight: 600;
+}
+.icon-d{
+  font-size:40px ; 
+  margin-left: 10px;
 }
 .card-subtitle {
   font-weight: 400;

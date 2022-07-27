@@ -10,7 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
   declarations: [
     SidebarComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
@@ -18,7 +18,7 @@ import { NavbarComponent } from './navbar/navbar.component';
   exports: [
     SidebarComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
   ]
 })
 export class ElementsModule { }
