@@ -1,0 +1,41 @@
+<nav id="sidebar" class="sidebar js-sidebar">
+    <div class="sidebar-content js-simplebar">
+      <ul class="sidebar-nav">
+        <br>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="#/pages-c/dashboard">
+            <i class="bi bi-speedometer2"></i><span class="align-middle">Dashboard</span>
+          </a>
+        </li>
+  
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="#/pages-c/request">
+            <i class="bi bi-journal-plus"></i><span class="align-middle">Solicitudes</span>
+          </a>
+        </li>
+  
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="#/pages-c/schedule">
+            <i class="bi bi-journal-check"></i> <span class="align-middle">Horario</span>
+          </a>
+        </li>
+
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="#/pages-c/settings">
+                <i class="bi bi-gear"></i><span class="align-middle">Ajustes</span>
+            </a>
+          </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <script>
+    $(function() {
+     $('.sidebar-nav li').click(function(e) {
+         e.preventDefault();
+         var $this = $(this);
+         $this.closest('ul').children('li').removeClass('active');
+         $this.parent().addClass('active');
+     });
+    });
+  </script>
