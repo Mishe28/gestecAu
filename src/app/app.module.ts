@@ -7,11 +7,13 @@ import { AuthLayoutComponent } from './layouts/authlayout/authlayout/authlayout.
 import { ElementsModule } from './elements/elements.module';
 import { AdminLayoutComponent } from './layouts/adminlayout/adminlayout/admin-layout.component';
 import { RouterModule } from '@angular/router';
+import { CoordinatorlayoutComponent } from './layouts/coordinatorlayout/coordinatorlayout/coordinatorlayout.component';
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    CoordinatorlayoutComponent,
   ],
   imports: [
     BrowserModule,
