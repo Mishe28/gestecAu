@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AssignmentComponent } from 'src/app/pages/assignment/assignment.component';
 import { CareerComponent } from 'src/app/pages/career/career.component';
 import { ClassroomComponent } from 'src/app/pages/classroom/classroom.component';
 import { CourseComponent } from 'src/app/pages/course/course.component';
@@ -29,4 +30,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'subject', component: SubjectComponent },
   { path: 'user', component: UserComponent },
   { path: 'classroom', component: ClassroomComponent },
+  { path: 'assignment', component: AssignmentComponent },
+
 ];
