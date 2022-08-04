@@ -1,41 +1,25 @@
-<nav id="sidebar" class="sidebar js-sidebar">
-    <div class="sidebar-content js-simplebar">
-      <ul class="sidebar-nav">
-        <br>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="#/pages-c/dashboard">
-            <i class="bi bi-speedometer2"></i><span class="align-middle">Dashboard</span>
-          </a>
-        </li>
-  
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="#/pages-c/request">
-            <i class="bi bi-journal-plus"></i><span class="align-middle">Solicitudes</span>
-          </a>
-        </li>
-  
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="#/pages-c/schedule">
-            <i class="bi bi-journal-check"></i> <span class="align-middle">Horario</span>
-          </a>
-        </li>
-
-        <li class="sidebar-item">
-            <a class="sidebar-link" href="#/pages-c/settings">
-                <i class="bi bi-gear"></i><span class="align-middle">Ajustes</span>
-            </a>
-          </li>
-      </ul>
-    </div>
-  </nav>
-  
-  <script>
-    $(function() {
-     $('.sidebar-nav li').click(function(e) {
-         e.preventDefault();
-         var $this = $(this);
-         $this.closest('ul').children('li').removeClass('active');
-         $this.parent().addClass('active');
-     });
-    });
-  </script>
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav" id="main-menu">
+                <br>
+                <a class="nav-link activo" href="#/pages-c/dashboard">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Dashboard
+                </a>
+                <a class="nav-link" href="#/pages-c/request">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-ballot-check"></i></div>
+                    Solicitudes
+                </a>
+                <a class="nav-link" href="#/pages-c/schedule">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                    Horarios
+                </a>
+                <a class="nav-link" href="#/pages-c/settings">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-gear"></i></div>
+                    Ajustes
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
