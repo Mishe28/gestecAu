@@ -1,53 +1,37 @@
-<nav id="sidebar" class="sidebar js-sidebar">
-  <div class="sidebar-content js-simplebar">
-    <ul class="sidebar-nav">
-      <br>
-      <li class="sidebar-item">
-        <a class="sidebar-link" href="#/pages/dashboard">
-          <i class="bi bi-speedometer2"></i><span class="align-middle">Dashboard</span>
-        </a>
-      </li>
-
-      <li class="sidebar-item">
-        <a class="sidebar-link" href="#/pages/classroom">
-          <i class="bi bi-house"></i><span class="align-middle">Aulas</span>
-        </a>
-      </li>
-
-      <li class="sidebar-item">
-        <a class="sidebar-link" href="#/pages/career">
-          <i class="bi bi-mortarboard"></i> <span class="align-middle">Carreras</span>
-        </a>
-      </li>
-
-      <li class="sidebar-item">
-        <a class="sidebar-link" href="#/pages/course">
-          <i class="bi bi-person-workspace"></i> <span class="align-middle">Cursos</span>
-        </a>
-      </li>
-
-      <li class="sidebar-item">
-        <a class="sidebar-link" href="#/pages/teacher">
-          <i class="bi bi-file-earmark-person"></i> <span class="align-middle">Docentes</span>
-        </a>
-      </li>
-
-      <li class="sidebar-item">
-        <a class="sidebar-link" href="#/pages/schedule">
-          <i class="bi bi-journal-check"></i> <span class="align-middle">Asignaciones</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<script>
-  $(function() {
-   $('.sidebar-nav li').click(function(e) {
-       e.preventDefault();
-       var $this = $(this);
-       $this.closest('ul').children('li').removeClass('active');
-       $this.parent().addClass('active');
-   });
-  });
-</script>
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav" id="main-menu">
+                <br>
+                <a class="nav-link activo" href="#/pages/dashboard">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Dashboard
+                </a>
+                <a class="nav-link" href="#/pages/classroom">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-landmark"></i></div>
+                    Aulas
+                </a>
+                <a class="nav-link" href="#/pages/career">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    Carreras
+                </a>
+                <a class="nav-link" href="#/pages/course">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-users-rectangle"></i></div>
+                    Cursos
+                </a>
+                <a class="nav-link" href="#/pages/teacher">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    Docentes
+                </a>
+                <a class="nav-link" href="#/pages/schedule">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                    Horarios
+                </a>
+                <a class="nav-link" href="#/pages/settings">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-gear"></i></div>
+                    Ajustes
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
