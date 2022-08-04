@@ -17,6 +17,7 @@ import { schoolYearComponent } from 'src/app/pages/school-year/school-year.compo
 import { StatusComponent } from 'src/app/pages/status/status.component';
 import { SubjectComponent } from 'src/app/pages/subject/subject.component';
 import { UserComponent } from 'src/app/pages/user/user.component';
+import { AssignmentComponent } from 'src/app/pages/assignment/assignment.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { UserComponent } from 'src/app/pages/user/user.component';
     UserComponent,
     DashboardComponent,
     SettingsComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AssignmentComponent
   ],
   imports: [
     CommonModule,
