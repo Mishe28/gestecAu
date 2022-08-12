@@ -4,3 +4,19 @@
 .user{
     margin-right: 10px;
 }
+
+.icon-user{
+    font-size: 25px;
+    color: rgb(146, 146, 146);
+}
+
+.title{
+    font-size: 17px;
+    width: 300px;
+    margin-left: 10px;
+    color: rgb(146, 146, 146);
+}
+
+.navbar-brand{
+    width: 280px;
+}

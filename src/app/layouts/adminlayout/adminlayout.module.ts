@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AdminLayoutRoutes } from './adminlayout-routing.module';
-import { Subject } from 'rxjs';
 import { DashboardComponent } from 'src/app/pages/dashboard/dashboard.component';
 import { SettingsComponent } from 'src/app/pages/settings/settings.component';
 import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.component';
@@ -18,6 +17,7 @@ import { StatusComponent } from 'src/app/pages/status/status.component';
 import { SubjectComponent } from 'src/app/pages/subject/subject.component';
 import { UserComponent } from 'src/app/pages/user/user.component';
 import { AssignmentComponent } from 'src/app/pages/assignment/assignment.component';
+import { TeacherDistributiveComponent } from 'src/app/pages/teacher-distributive/teacher-distributive.component';
 
 
 @NgModule({
@@ -36,7 +36,8 @@ import { AssignmentComponent } from 'src/app/pages/assignment/assignment.compone
     DashboardComponent,
     SettingsComponent,
     UserProfileComponent,
-    AssignmentComponent
+    AssignmentComponent,
+    TeacherDistributiveComponent
   ],
   imports: [
     CommonModule,

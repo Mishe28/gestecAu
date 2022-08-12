@@ -11,6 +11,7 @@ import { schoolYearComponent } from 'src/app/pages/school-year/school-year.compo
 import { SettingsComponent } from 'src/app/pages/settings/settings.component';
 import { StatusComponent } from 'src/app/pages/status/status.component';
 import { SubjectComponent } from 'src/app/pages/subject/subject.component';
+import { TeacherDistributiveComponent } from 'src/app/pages/teacher-distributive/teacher-distributive.component';
 import { TeacherComponent } from 'src/app/pages/teacher/teacher.component';
 import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.component';
 import { UserComponent } from 'src/app/pages/user/user.component';
@@ -31,5 +32,5 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'classroom', component: ClassroomComponent },
   { path: 'assignment', component: AssignmentComponent },
-
+  { path: 'teacher-distributive', component: TeacherDistributiveComponent },
 ];
