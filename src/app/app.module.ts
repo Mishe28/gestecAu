@@ -8,6 +8,9 @@ import { ElementsModule } from './elements/elements.module';
 import { AdminLayoutComponent } from './layouts/adminlayout/adminlayout/admin-layout.component';
 import { RouterModule } from '@angular/router';
 import { CoordinatorlayoutComponent } from './layouts/coordinatorlayout/coordinatorlayout/coordinatorlayout.component';
+import {DialogModule} from 'primeng/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,11 @@ import { CoordinatorlayoutComponent } from './layouts/coordinatorlayout/coordina
     HttpClientModule,
     ElementsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    DialogModule,
+
+
   ],
   
   providers: [],

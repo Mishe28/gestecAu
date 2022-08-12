@@ -1,1 +1,92 @@
-<p>CAREER</p>
+<div>
+    <div class="container text-center">
+        <div class="row justify-content-end">
+            <div class="col-10 p-0">
+                <h1>Carrera</h1>
+            </div>
+            <div class="col-2 p-0">
+                <button type="button" class="btn btn-info m-2" (click)="showDialog()">
+                    Nuevo
+                </button>
+            </div>
+        </div>
+    </div>
+    <p-dialog header=" Nueva Carrera" [(visible)]="display" [breakpoints]=" {'960px': '75vw' , '640px' : '100vw' }"
+        [style]="{width: '50vw'}">
+        <div class="container text-start">
+            <form>
+                <div class="row justify-content-start mb-3">
+                    <div class="col-6">
+                        <label for=" nombre" class="form-label">Nombre</label>
+                        <input type="nombre" class="form-control" id="nombre" aria-describedby="nombre" required>
+                    </div>
+                    <div class="col-6">
+                        <label for=" tiempo" class="form-label">Tiempo de duración</label>
+                        <input type="number" class="form-control" id="tiempo" aria-describedby="tiempo" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="foto" class="form-label">Foto</label>
+                    <input type="file" class="form-control" id="nombre" aria-describedby="nombre" required>
+
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" required>
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
+                </div>
+            </form>
+        </div>
+        <ng-template pTemplate="footer">
+            <button type="submit" (click)=ocultarDialog() class="btn btn-primary">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+
+        </ng-template>
+    </p-dialog>
+    <div class="row row-cols-md-4 g-4">
+        <div class="col">
+            <div class="card text-center" style="width: 15rem;">
+                <img src="https://i.postimg.cc/7Y0V0SR8/GESTION-AULAS-LOGO-removebg-preview.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Diseño de Modas</h5>
+                    <i class="bi bi-clock">
+                        <p class="card-text">Tiempo de duración 6 semestres</p>
+                    </i>
+                    <i class="bi bi-people">
+                        <p class="card-text">Tiempo de duración 6 semestres</p>
+                    </i>
+                    <a href="#/pages/assignment" class="btn btn-primary">Ingresar Asignaturas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-center" style="width: 15rem;">
+                <img src="https://i.postimg.cc/7Y0V0SR8/GESTION-AULAS-LOGO-removebg-preview.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Diseño de Modas</h5>
+                    <i class="bi bi-clock">
+                        <p class="card-text">Tiempo de duración 6 semestres</p>
+                    </i>
+                    <i class="bi bi-people">
+                        <p class="card-text">Tiempo de duración 6 semestres</p>
+                    </i>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-center" style="width: 15rem;">
+                <img src="https://i.postimg.cc/7Y0V0SR8/GESTION-AULAS-LOGO-removebg-preview.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Diseño de Modas</h5>
+                    <i class="bi bi-clock">
+                        <p class="card-text">Tiempo de duración 6 semestres</p>
+                    </i>
+                    <i class="bi bi-people">
+                        <p class="card-text">Tiempo de duración 6 semestres</p>
+                    </i>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

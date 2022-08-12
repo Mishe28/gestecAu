@@ -9,7 +9,18 @@ import { ClassroomHttpService } from 'src/app/services/classroom-http.service';
 export class ClassroomComponent implements OnInit {
 
   constructor(private classroomHttpService:ClassroomHttpService) { }
+  display: boolean = false;
 
+  showDialog() {
+    this.display = true;
+}
+guardar(){
+  console.log("Guardado")
+  this.display = false;
+}
+ocultarDialog() {
+  this.display = false;
+}
   ngOnInit(): void {
     this.findAll();
   }
