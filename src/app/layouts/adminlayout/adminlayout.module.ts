@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AdminLayoutRoutes } from './adminlayout-routing.module';
@@ -18,6 +18,9 @@ import { StatusComponent } from 'src/app/pages/status/status.component';
 import { SubjectComponent } from 'src/app/pages/subject/subject.component';
 import { UserComponent } from 'src/app/pages/user/user.component';
 import { AssignmentComponent } from 'src/app/pages/assignment/assignment.component';
+import { DialogModule } from 'primeng/dialog';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -38,8 +41,13 @@ import { AssignmentComponent } from 'src/app/pages/assignment/assignment.compone
     UserProfileComponent,
     AssignmentComponent
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
+    DialogModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(AdminLayoutRoutes),
   ]
 })
