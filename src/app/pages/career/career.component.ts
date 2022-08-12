@@ -9,7 +9,18 @@ import { CareerHttpService } from 'src/app/services/career-http.service';
 export class CareerComponent implements OnInit {
 
   constructor(private careerHttpService:CareerHttpService) { }
+  display: boolean = false;
 
+  showDialog() {
+    this.display = true;
+}
+guardar(){
+  console.log("Guardado")
+  this.display = false;
+}
+ocultarDialog() {
+  this.display = false;
+}
   ngOnInit(): void {
     this.findAll();
   }
