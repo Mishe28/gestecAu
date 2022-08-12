@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SubjectHttpService } from 'src/app/services/subject-http.service';
 
 @Component({
   selector: 'app-subject',
@@ -8,38 +7,21 @@ import { SubjectHttpService } from 'src/app/services/subject-http.service';
 })
 export class SubjectComponent implements OnInit {
 
-  constructor(private subjectHttpService: SubjectHttpService) {}
+  constructor() { }
 
   ngOnInit(): void {
-    this.findAll();
   }
+  display: boolean = false;
 
-  findAll() {
-    this.subjectHttpService.findAll().subscribe(response => {
-      console.log(response);
-    });
+  showDialog() {
+    this.display = true;
   }
-
-  findOne() {
-    this.subjectHttpService.findOne(1).subscribe(response => {
-      console.log(response);
-    });
+  guardar() {
+    console.log("Guardado")
+    this.display = false;
   }
-  create(payload: any) {
-    this.subjectHttpService.create(null).subscribe(response => {
-      console.log(response);
-    });
-  }
-
-  update(payload: any) {
-    this.subjectHttpService.update(1, null).subscribe(response => {
-      console.log(response);
-    });
-  }
-  delete() {
-    this.subjectHttpService.delete(1).subscribe(response => {
-      console.log(response);
-    });
+  ocultarDialog() {
+    this.display = false;
   }
 
 }
