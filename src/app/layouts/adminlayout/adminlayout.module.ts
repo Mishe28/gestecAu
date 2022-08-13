@@ -1,8 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router'; 
 import { AdminLayoutRoutes } from './adminlayout-routing.module';
-import { Subject } from 'rxjs';
 import { DashboardComponent } from 'src/app/pages/dashboard/dashboard.component';
 import { SettingsComponent } from 'src/app/pages/settings/settings.component';
 import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.component';
@@ -21,6 +20,7 @@ import { AssignmentComponent } from 'src/app/pages/assignment/assignment.compone
 import { DialogModule } from 'primeng/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TeacherDistributiveComponent } from 'src/app/pages/teacher-distributive/teacher-distributive.component';
 
 
 @NgModule({
@@ -39,7 +39,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     SettingsComponent,
     UserProfileComponent,
-    AssignmentComponent
+    AssignmentComponent,
+    TeacherDistributiveComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

@@ -1,1 +1,166 @@
-<p>request works!</p>
+<div class="text-end mt-3">
+    <button class="btn-new" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud">Nueva Solicitud</button>
+    <button class="btn-import" data-bs-toggle="modal" data-bs-target="#modalImport">Importar</button>
+</div>
+<div class="container text-center pb-3">
+    <div class="row align-items-center">
+        <div class="col-6 p-0">
+            <div class="input-group">
+                <i class="input-group-text bi bi-search search"></i>
+                <input type="text" class="form-control search-input" placeholder="Buscar" aria-label="Username">
+                <!--Poner función para limpiar el input-->
+                <button class="input-group-text close"><i class="bi bi-x-lg "></i></button>
+                <button type="button" class="input-group-text btn-filter">Filtrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabla Index -->
+<div>
+    <table class="table" aria-label="Table-request">
+        <thead class="table-dark">
+            <tr class="text-center">
+                <th scope="col">Código</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Asignatura</th>
+                <th scope="col">Cant. Horas</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Opciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center">
+                <td>Aula 1</td>
+                <td>Descripción 1</td>
+                <td>Cenepa</td>
+                <td>20</td>
+                <td>APROBADO</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <i type="button" class="bi bi-eye icon"></i>
+                        <i type="button" class="bi bi-pencil-square mx-2 icon" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud"></i>
+                        <i type="button" class=" bi bi-trash mx-2 icon " data-bs-toggle="popover"></i>
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal Nueva Solitud -->
+<div class="modal fade" data-bs-backdrop="static" id="modalNuevaSolicitud" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Solicitud</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="form-label" for="id">N° Solicitud</label>
+                                <input type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="periodo" class="form-label">Periodo</label>
+                                <select class="form-select" type="text" name="" id="">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">2020-1</option>
+                                    <option value="2">2020-2</option>
+                                    <option value="3">2022-1</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="carrera" class="form-label">Carrera</label>
+                                <select class="form-select" type="text" name="" id="">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">SOFTWARE</option>
+                                    <option value="2">MARKETING</option>
+                                    <option value="3">TURISMO</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="distributivo" class="form-label">Distributivo Docente</label>
+                                <select class="form-select" type="text" name="" id="">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">2020-1</option>
+                                    <option value="2">2020-2</option>
+                                    <option value="3">2022-1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="date1" class="form-label">Fecha Inicio</label>
+                                <input class="form-control" type="date" name="" id="">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="date2" class="form-label">Fecha Fin</label>
+                                <input  class="form-control"type="date" name="" id="">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="course" class="form-label">Curso</label>
+                                <input class="form-control" type="text" disabled name="" id="">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="subject" class="form-label">Asignatura</label>
+                                <input class="form-control" type="text" disabled name="" id="">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="teacher" class="form-label">Docente</label>
+                                <input  class="form-control"type="text" disabled name="" id="">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="course" class="form-label">Horas Semanales</label>
+                                <input class="form-control" type="number" name="" id="">
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn-new">Solicitar Aula</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Import -->
+<div class="modal fade" data-bs-backdrop="static" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Importar Solicitudes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <p>Descarga el archivo modelo, modifícalo e impórtalo nuevamente, para actualizar tus datos o 
+                        insertar nuevas solicitudes.</p>
+                    <div class="d-grid gap-2 col-8 mx-auto">
+                        <button class="btn-download" type="button">Descargar Modelo <i class="bi bi-download icon-buttom"></i></button>
+                        <button class="btn-upload" type="button">Importar Modelo <i class="bi bi-upload icon-buttom"></i></button>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

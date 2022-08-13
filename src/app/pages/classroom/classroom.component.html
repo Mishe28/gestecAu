@@ -1,102 +1,89 @@
+<div class="text-end mt-3">
+        <button type="button" class="btn-new" (click)="showDialog()">
+            Nuevo
+        </button>
+        <button type="button" class="btn-import">Importar</button>
+</div>
+<p-dialog header=" Nueva Aula" [(visible)]="display" [breakpoints]=" {'960px': '75vw' , '640px' : '100vw' }"
+    [style]="{width: '50vw'}">
+    <div class="container text-start">
+        <form>
+            <div class="row justify-content-start mb-3">
+                <div class="col-4">
+                    <label for=" nombre" class="form-label">Nombre</label>
+                    <input type="nombre" class="form-control" id="nombre" aria-describedby="nombre" required>
+                </div>
+                <div class="col-4">
+                    <label for="ubicacion" class="form-label">Ubicación</label>
+                    <select class="form-select" required aria-label="Default select example" required>
+                        <option selected></option>
+                        <option value="1">Cenepa</option>
+                        <option value="2">Edificio</option>
+                        <option value="3">Edificio 2</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="capacidad" class="form-label">Capacidad</label>
+                    <input type="number" class="form-control" id="capacidad" aria-describedby="capacidad" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" required>
+                <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
+            </div>
+        </form>
+    </div>
+    <ng-template pTemplate="footer">
+        <button type="submit" (click)=ocultarDialog() class="btn btn-primary">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+
+    </ng-template>
+</p-dialog>
+<div class="container text-center pb-3">
+    <div class="row align-items-center">
+        <div class="col-6 p-0">
+            <div class="input-group">
+                <i class="input-group-text bi bi-search search"></i>
+                <input type="text" class="form-control search-input" placeholder="Buscar" aria-label="Username">
+                <!--Poner función para limpiar el input-->
+                <button class="input-group-text close"><i class="bi bi-x-lg "></i></button>
+                <button type="button" class="input-group-text btn-filter">Filtrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div>
-    <div class="container text-center">
-        <div class="row justify-content-end">
-            <div class="col-3 p-0">
-                <button type="button" class="btn btn-info m-2" (click)="showDialog()">
-                    Nuevo
-                </button>
-                <button type="button" class="btn btn-info">Importar</button>
-            </div>
-        </div>
-    </div>
-    <p-dialog header=" Nueva Aula" [(visible)]="display" [breakpoints]=" {'960px': '75vw' , '640px' : '100vw' }"
-        [style]="{width: '50vw'}">
-        <div class="container text-start">
-            <form>
-                <div class="row justify-content-start mb-3">
-                    <div class="col-4">
-                        <label for=" nombre" class="form-label">Nombre</label>
-                        <input type="nombre" class="form-control" id="nombre" aria-describedby="nombre" required>
+    <table class="table" aria-label="Table">
+        <thead class="table-dark">
+            <tr class="text-center">
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Ubicación</th>
+                <th scope="col">Capacidad</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Opciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center">
+                <td>Aula 1</td>
+                <td>Descripción 1</td>
+                <td>Cenepa</td>
+                <td>20</td>
+                <td class="form-switch align-items-center"><input class="form-check-input m-0" type="checkbox"></td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <i type="button" class="bi bi-pencil-square icon" (click)="showDialog()"></i>
+                        <i type="button" class=" bi bi-trash mx-2 icon" data-bs-toggle="popover"></i>
                     </div>
-                    <div class="col-4">
-                        <label for="ubicacion" class="form-label">Ubicación</label>
-                        <select class="form-select" required aria-label="Default select example" required>
-                            <option selected></option>
-                            <option value="1">Cenepa</option>
-                            <option value="2">Edificio</option>
-                            <option value="3">Edificio 2</option>
-                        </select>
-                    </div>
-                    <div class="col-4">
-                        <label for="capacidad" class="form-label">Capacidad</label>
-                        <input type="number" class="form-control" id="capacidad" aria-describedby="capacidad" required>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" required>
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
-                </div>
-            </form>
-        </div>
-        <ng-template pTemplate="footer">
-            <button type="submit" (click)=ocultarDialog() class="btn btn-primary">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+                </td>
 
-        </ng-template>
-    </p-dialog>
-    <div class="container text-center pb-3">
-        <div class="row align-items-center">
-            <div class="col-8 p-0">
-                <div class="input-group">
-                    <i class="input-group-text bi bi-search"></i>
-                    <input type="text" class="form-control" placeholder="Buscar" aria-label="Username">
-                </div>
-            </div>
-            <div class="col-2 p-0">
-                <button type="button" class="btn btn-info  m-2">Filtrar</button>
-                <button type="button" class="btn btn-success">Exportar</button>
-            </div>
-        </div>
-    </div>
-    <div>
-        <table class="table">
-            <!-- style="background-color: rgba(1, 41, 112, 0.5);;" -->
-            <thead class="table-dark">
-                <tr class="text-center">
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Ubicación</th>
-                    <th scope="col">Capacidad</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Opciones</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="text-center">
-                    <td>Aula 1</td>
-                    <td>Descripción 1</td>
-                    <td>Cenepa</td>
-                    <td>20</td>
-                    <td class="form-switch align-items-center"><input class="form-check-input m-0" type="checkbox"></td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <i type="button" class=" bi bi-trash mx-2" data-bs-toggle="popover"></i>
-                            <i type="button" class="bi bi-pencil-square" (click)="showDialog()"></i>
-                            <!-- <p-toast></p-toast>
-
-                            <p-confirmPopup></p-confirmPopup>
-
-                            <button (click)="confirm($event)" pButton icon="pi pi-check" label="Confirm"></button> -->
-                        </div>
-                    </td>
-
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            </tr>
+        </tbody>
+    </table>
 </div>
