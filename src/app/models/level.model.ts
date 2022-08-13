@@ -1,4 +1,4 @@
-export interface StatusModel {
+export interface LevelModel {
     id?: number;
     name?: string;
 }
