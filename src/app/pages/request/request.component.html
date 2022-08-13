@@ -33,15 +33,15 @@
         <tbody>
             <tr *ngFor="let request of request">
                 <td>{{request.id}} </td>
-                <td>{{request.teacherDistribution?.course?.name}} </td>
-                <td>{{request.teacherDistribution?.subject}} </td>
+                <td>{{request.teacherDistribution?.course?.id}} </td>
+                <td>{{request.teacherDistribution}} </td>
                 <td>{{request.totalHoursRequested}} </td>
-                <td>{{request.status}} </td>
+                <td>{{request.state?.name}} </td>
                 <td class="text-center">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <i type="button" class="bi bi-eye icon" data-bs-toggle="modal" data-bs-target="#modalDetail"></i>
-                        <i type="button" class="bi bi-pencil-square mx-2 icon" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud"></i>
-                        <i type="button" class=" bi bi-trash mx-2 icon " data-bs-toggle="popover"></i>
+                        <i type="button" class="bi bi-pencil-square mx-2 icon" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud" ></i>
+                        <i type="button" class=" bi bi-trash mx-2 icon " data-bs-toggle="popover" (click)="delete(request.id!)"></i>
                     </div>
                 </td>
             </tr>
@@ -60,22 +60,18 @@
             <div class="modal-body">
                 <div class="container">
                     <form [formGroup]="myForm">
+                        <!--
                         <div class="row">
                             <div class="col-md-2">
                                 <label class="form-label" for="id">N° Solicitud</label>
                                 <input type="text" class="form-control" id="id"  value="1" formControlName="id">
                             </div>
-                        </div>
+                        </div>-->
                         <br>
                         <div class="row">
                             <div class="col-md-2">
                                 <label for="periodo" class="form-label">Periodo</label>
-                                <select class="form-select" type="text" name="" id="periodo" formControlName="periodo">
-                                    <option selected>Seleccionar</option>
-                                    <option value="1">2020-1</option>
-                                    <option value="2">2020-2</option>
-                                    <option value="3">2022-1</option>
-                                </select>
+                                <p-dropdown id="career" [options]="schoolYear" formControlName="careersss" optionLabel="name"></p-dropdown>
                             </div>
                             <div class="col-md-5">
                                 <label for="carrera" class="form-label">Carrera</label>
@@ -83,12 +79,7 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="distributivo" class="form-label">Distributivo Docente</label>
-                                <select class="form-select" type="text" name="" id="teacherDistributive" formControlName="teacherDistributive">
-                                    <option selected>Seleccionar</option>
-                                    <option value="1">2020-1</option>
-                                    <option value="2">2020-2</option>
-                                    <option value="3">2022-1</option>
-                                </select>
+                                <p-dropdown id="career" [options]="teacherDistributive" formControlName="careersss" optionLabel="name"></p-dropdown>
                             </div>
                         </div>
                         <br>
@@ -101,10 +92,7 @@
                                 <label for="date2" class="form-label">Fecha Fin</label>
                                 <input  class="form-control"type="date" name="" id="endDate" formControlName="endDate">
                             </div>
-                            <div class="col-md-4">
-                                <label for="course" class="form-label">Curso</label>
-                                <input class="form-control" type="text" disabled name="" id="course">
-                            </div>
+                            
                         </div>
                         <br>
                         <div class="row">

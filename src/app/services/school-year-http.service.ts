@@ -9,7 +9,7 @@ import { ResponseModel } from '../models/response.model';
 })
 
 export class SchoolYearHttpService {
-  HOST = `${environment.HOST}SchoolYears`;
+  HOST = `${environment.HOST}school-years`;
 
   constructor(private httpClient: HttpClient) {
   }

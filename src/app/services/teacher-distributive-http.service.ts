@@ -8,7 +8,7 @@ import { ResponseModel } from '../models/response.model';
   providedIn: 'root'
 })
 export class TeacherDistributiveHttpService {
-  HOST = `${environment.HOST}TeacherDistributions`;
+  HOST = `${environment.HOST}teacher-distributions`;
 
   constructor(private httpClient: HttpClient) {
   }

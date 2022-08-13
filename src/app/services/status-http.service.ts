@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import { Observable } from 'rxjs';
 import { ResponseModel } from '../models/response.model';
 
 @Injectable({
@@ -9,27 +10,29 @@ import { ResponseModel } from '../models/response.model';
 
 export class StatusHttpService {
   HOST = `${environment.HOST}Status`;
+  
+  constructor(private httpClient: HttpClient) { }
 
-  constructor(private httpClient: HttpClient) {
+  findAll(): Observable<any> {
+    return this.httpClient.get<ResponseModel>(this.HOST)
   }
 
-  findAll() {
-    return this.httpClient.get<ResponseModel>(this.HOST);
+  findOne(id: number): Observable<any> {
+    return this.httpClient.get<ResponseModel>(`${this.HOST}/${id}`)
   }
 
-  // findOne(id: number) {
-  //   return this.httpClient.get(url);
-  // }
+  create(payload: any): Observable<any> {
+    const url = `${this.HOST}`;
+    return this.httpClient.post<ResponseModel>(url, payload);
+  }
 
-  // create(payload: any) {
-  //   return this.httpClient.post(url, payload);
-  // }
+  update(id: number, payload: any): Observable<any> {
+    const url = `${this.HOST}/${id}`;
+    return this.httpClient.put<ResponseModel>(url, payload);
+  }
 
-  // update(id: number, payload: any) {
-  //   return this.httpClient.put(url, payload);
-  // }
-
-  // delete(id: number) {
-  //   return this.httpClient.delete(url);
-  // }
+  delete(id: number): Observable<any> {
+    const url = `${this.HOST}/${id}`;
+    return this.httpClient.delete<ResponseModel>(url);
+  }
 }
