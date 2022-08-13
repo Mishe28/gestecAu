@@ -9,6 +9,7 @@ import { RequestComponent } from 'src/app/pages/request/request.component';
 import { DialogModule } from 'primeng/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    DropdownModule,
     RouterModule.forChild(CoordinateLayoutRoutes),
   ]
 })

@@ -1,1 +1,277 @@
-<h1>jssjsjsjjs</h1>
+<div class="text-end mt-3">
+    <button class="btn-import" data-bs-toggle="modal" data-bs-target="#modalConfigHours">Configurar Horas</button>
+    <button class="btn-new" data-bs-toggle="modal" data-bs-target="#modalSolicitud">Solicitudes</button>
+</div>
+<br>
+<div class="text-center mb-s mb-3">
+    <div class="row align-items-center">
+        <div class="p-0">
+            <div class="row">
+                <div class="col-md-3">
+                    <select class="form-select col-2" name="" id="">
+                        <option selected>Carrera</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" name="" id="">
+                        <option selected>Nivel</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group ">
+                        <i class="input-group-text bi bi-search search"></i>
+                        <input type="text" class="form-control search-input" placeholder="Buscar" aria-label="Username">
+                        <!--Poner función para limpiar el input-->
+                        <button class="input-group-text close"><i class="bi bi-x-lg "></i></button>
+                        <button type="button" class="input-group-text btn-filter">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tabla Index -->
+<div>
+    <table class="table" aria-label="Table-request">
+        <thead class="table-dark">
+            <tr class="text-center">
+                <th scope="col">Aula</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Asignatura</th>
+                <th scope="col">Docente</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Opciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td class="text-center">
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <i type="button" class="bi bi-eye icon" data-bs-toggle="modal"
+                            data-bs-target="#modalDetail"></i>
+                        <i type="button" class="bi bi-pencil-square mx-2 icon" data-bs-toggle="modal"
+                            data-bs-target="#modalNuevaSolicitud"></i>
+                        <i type="button" class=" bi bi-trash mx-2 icon " data-bs-toggle="popover"></i>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<button class="btn-new" data-bs-toggle="modal" data-bs-target="#modalNuevaAsignación">Abre Asignación</button>
+
+<!-- Modal Nueva Asignación -->
+<div class="modal fade" data-bs-backdrop="static" id="modalNuevaAsignación" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Asignación de Aula</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="form-label" for="id">Solicitud</label>
+                                <input type="text" class="form-control" disabled>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label" for="id">Horas Semanales</label>
+                                <input type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="form-label" for="id">Carrera</label>
+                                <input type="text" class="form-control" disabled>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" for="id">Curso</label>
+                                <input type="text" class="form-control" disabled>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" for="id">Asignatura</label>
+                                <input type="text" class="form-control" disabled>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" for="id">Docente</label>
+                                <input type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="date1" class="form-label">Aula</label>
+                                <select class="form-select" name="" id="">
+                                    <option selected>Aula</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="date2" class="form-label">Día</label>
+                                <select class="form-select" name="" id="">
+                                    <option selected>Día</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="course" class="form-label">Hora</label>
+                                <select class="form-select" name="" id="">
+                                    <option selected>Hora</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="date1" class="form-label">Fecha Inicio</label>
+                                <input class="form-control" type="date" name="" id="" disabled>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="date2" class="form-label">Fecha Fin</label>
+                                <input class="form-control" type="date" name="" id="" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="color" class="form-label">Color</label>
+                                <div class="input-group">
+                                <input class=" btn-color" type="button" name="" id="" style="background-color: #ffbe5c; border-radius: 15px;" value="#ffbe5c" >
+                                <input class=" btn-color" type="button" name="" id="" style="background-color: #7ed957; border-radius: 15px;" value="#7ed957">
+                                <input class=" btn-color" type="button" name="" id="" style="background-color: #38b6ff; border-radius: 15px;" value="#38b6ff">
+                                <input class=" btn-color" type="button" name="" id="" style="background-color: #8C52FF; border-radius: 15px;" value="#8C52FF">
+                                <input class=" btn-color" type="button" name="" id="" style="background-color: #c9e265; border-radius: 15px;" value="#c9e265">
+                                <input class=" btn-color" type="button" name="" id="" style="background-color: #FDD440; border-radius: 15px;" value="#FDD440">
+                                <input class=" form-control-color color" type="color" name="" id="" value="#CC458F">
+                                </div>
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2">
+                                <button class="btn-import btn-i">Agregar al horario</button>
+                            </div>
+                        </div>
+                        <br>
+                        <h3>Nombre Aula</h3>
+                        <table class="table" aria-label="table-schedule">
+                            <thead class="table-dark">
+                              <tr>
+                                <th>Hora</th>
+                                <th>Lunes</th>
+                                <th>Martes</th>
+                                <th>Miércoles</th>
+                                <th>Jueves</th>
+                                <th>Viernes</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>07:00-08:00</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                              </tr>
+                              <tr>
+                                <td>08:00-09:00</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn-new">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Configurar Horas -->
+<div class="modal fade" data-bs-backdrop="static" id="modalConfigHours" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Importar Solicitudes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <span class="p-des">*Coloca las horas máximas por semana, para cada jornada en cada carrera.</span>
+                    <table class="table" aria-label="table-hours">
+                        <thead class="table-light">
+                            <tr class="text-center">
+                                <th>Carrera</th>
+                                <th>MATUTINO</th>
+                                <th>VESPERTINO</th>
+                                <th>NOCTURNO</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>...</td>
+                                <td><input class="form-control num-hour" type="number" name="" id=""></td>
+                                <td><input class="form-control num-hour" type="number" name="" id=""></td>
+                                <td><input class="form-control num-hour" type="number" name="" id=""></td>
+                                <td class="text-center"><i type="button" class="fa-regular fa-floppy-disk icon-save"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Solicitudes -->
+<div class="modal fade" data-bs-backdrop="static" id="modalSolicitud" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Solicitud de Asignación de Aula</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <table class="table">
+                        <thead class="table-light">
+                            <tr class="text-center">
+                                <th>Código</th>
+                                <th>Estado</th>
+                                <th>Solicitud</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>...</td>
+                                <td>...</td>
+                                <td class="text-center"><button class="btn-solicitud">Ver Solicitud</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

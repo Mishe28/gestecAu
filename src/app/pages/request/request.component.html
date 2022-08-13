@@ -2,7 +2,7 @@
     <button class="btn-new" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud">Nueva Solicitud</button>
     <button class="btn-import" data-bs-toggle="modal" data-bs-target="#modalImport">Importar</button>
 </div>
-<div class="container text-center pb-3">
+<div class="container text-center mb-3 mb-s">
     <div class="row align-items-center">
         <div class="col-6 p-0">
             <div class="input-group">
@@ -31,26 +31,25 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="text-center">
-                <td>Aula 1</td>
-                <td>Descripción 1</td>
-                <td>Cenepa</td>
-                <td>20</td>
-                <td>APROBADO</td>
-                <td>
+            <tr *ngFor="let request of request">
+                <td>{{request.id}} </td>
+                <td>{{request.teacherDistribution?.course?.name}} </td>
+                <td>{{request.teacherDistribution?.subject}} </td>
+                <td>{{request.totalHoursRequested}} </td>
+                <td>{{request.status}} </td>
+                <td class="text-center">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <i type="button" class="bi bi-eye icon"></i>
+                        <i type="button" class="bi bi-eye icon" data-bs-toggle="modal" data-bs-target="#modalDetail"></i>
                         <i type="button" class="bi bi-pencil-square mx-2 icon" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud"></i>
                         <i type="button" class=" bi bi-trash mx-2 icon " data-bs-toggle="popover"></i>
                     </div>
                 </td>
-
             </tr>
         </tbody>
     </table>
 </div>
 
-<!-- Modal Nueva Solitud -->
+<!--Modal Nueva Solitud-->
 <div class="modal fade" data-bs-backdrop="static" id="modalNuevaSolicitud" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -60,18 +59,18 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <form action="">
+                    <form [formGroup]="myForm">
                         <div class="row">
                             <div class="col-md-2">
                                 <label class="form-label" for="id">N° Solicitud</label>
-                                <input type="text" class="form-control" disabled>
+                                <input type="text" class="form-control" id="id"  value="1" formControlName="id">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-md-2">
                                 <label for="periodo" class="form-label">Periodo</label>
-                                <select class="form-select" type="text" name="" id="">
+                                <select class="form-select" type="text" name="" id="periodo" formControlName="periodo">
                                     <option selected>Seleccionar</option>
                                     <option value="1">2020-1</option>
                                     <option value="2">2020-2</option>
@@ -80,16 +79,11 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="carrera" class="form-label">Carrera</label>
-                                <select class="form-select" type="text" name="" id="">
-                                    <option selected>Seleccionar</option>
-                                    <option value="1">SOFTWARE</option>
-                                    <option value="2">MARKETING</option>
-                                    <option value="3">TURISMO</option>
-                                </select>
+                                <p-dropdown id="career" [options]="careers" formControlName="careersss" optionLabel="name"></p-dropdown>
                             </div>
                             <div class="col-md-5">
                                 <label for="distributivo" class="form-label">Distributivo Docente</label>
-                                <select class="form-select" type="text" name="" id="">
+                                <select class="form-select" type="text" name="" id="teacherDistributive" formControlName="teacherDistributive">
                                     <option selected>Seleccionar</option>
                                     <option value="1">2020-1</option>
                                     <option value="2">2020-2</option>
@@ -101,30 +95,30 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="date1" class="form-label">Fecha Inicio</label>
-                                <input class="form-control" type="date" name="" id="">
+                                <input class="form-control" type="date" name="" id="startDate" formControlName="startDate">
                             </div>
                             <div class="col-md-4">
                                 <label for="date2" class="form-label">Fecha Fin</label>
-                                <input  class="form-control"type="date" name="" id="">
+                                <input  class="form-control"type="date" name="" id="endDate" formControlName="endDate">
                             </div>
                             <div class="col-md-4">
                                 <label for="course" class="form-label">Curso</label>
-                                <input class="form-control" type="text" disabled name="" id="">
+                                <input class="form-control" type="text" disabled name="" id="course">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="subject" class="form-label">Asignatura</label>
-                                <input class="form-control" type="text" disabled name="" id="">
+                                <input class="form-control" type="text" disabled name="" id="subject">
                             </div>
                             <div class="col-md-4">
                                 <label for="teacher" class="form-label">Docente</label>
-                                <input  class="form-control"type="text" disabled name="" id="">
+                                <input  class="form-control"type="text" disabled name="" id="teacher">
                             </div>
                             <div class="col-md-4">
                                 <label for="course" class="form-label">Horas Semanales</label>
-                                <input class="form-control" type="number" name="" id="">
+                                <input class="form-control" type="number" name="" id="hour" formControlName="hour">
                             </div>
                         </div>
                         <br>
@@ -133,7 +127,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn-new">Solicitar Aula</button>
+                <button type="button" class="btn-new" (click)="guardar()">Solicitar Aula</button>
             </div>
         </div>
     </div>
@@ -156,6 +150,32 @@
                         <button class="btn-upload" type="button">Importar Modelo <i class="bi bi-upload icon-buttom"></i></button>
                     </div>
                     <br>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal View -->
+<div class="modal fade" data-bs-backdrop="static" id="modalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalle Solicitud</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <p><strong>Carrera:</strong> </p>
+                    <p><strong>Curso:</strong> </p>
+                    <p><strong>Asignatura:</strong> </p>
+                    <p><strong>Horas Semanales:</strong> </p>
+                    <p><strong>Docente:</strong> </p>
+                    <p><strong>Fecha:</strong> </p>
+                    <button class="btn-import">APROBADO</button>
                 </div>
             </div>
             <div class="modal-footer">

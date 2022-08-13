@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 
 export class CareerHttpService {
-  HOST = `${environment.HOST}/careers`;
+  HOST = `${environment.HOST}Careers`;
 
   constructor(private httpClient: HttpClient) {
   }

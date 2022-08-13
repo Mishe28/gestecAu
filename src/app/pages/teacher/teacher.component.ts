@@ -34,7 +34,6 @@ export class TeacherComponent implements OnInit {
       telephone: [null, [Validators.required]],
       email: [null, [Validators.required]],
       stateAx: [false,],
-
     })
   }
   onSubmit() {
