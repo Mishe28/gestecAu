@@ -1,4 +1,4 @@
-export interface StatusModel {
+export interface SchoolDayModel {
     id?: number;
     name?: string;
 }
