@@ -6,5 +6,5 @@ export interface TeacherModel {
     name?: string;
     email?: string;
     telephone?: string;
-    status?: StatusModel;
+    state?: StatusModel;
 }
