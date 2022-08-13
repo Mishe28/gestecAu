@@ -10,5 +10,5 @@ export interface RequestModel {
     endDate?: string;
     career?: CareerModel;
     teacherDistribution?: TeacherDistributionModel;
-    status?: StatusModel;
+    state?: StatusModel;
 }

@@ -8,7 +8,7 @@ import { ResponseModel } from '../models/response.model';
   providedIn: 'root'
 })
 export class RequestHttpService {
-  HOST = `${environment.HOST}Request`;
+  HOST = `${environment.HOST}requests`;
   
   constructor(private httpClient: HttpClient) { }
 

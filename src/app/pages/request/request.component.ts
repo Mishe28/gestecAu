@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CareerModel } from 'src/app/models/career.model';
+import { CourseModel } from 'src/app/models/course.model';
 import { RequestModel } from 'src/app/models/request.model';
+import { SchoolYearModel } from 'src/app/models/schoolYear.model';
+import { StatusModel } from 'src/app/models/status.model';
+import { SubjectModel } from 'src/app/models/subject.model';
 import { TeacherDistributionModel } from 'src/app/models/teacherDistribution.model';
 import { CareerHttpService } from 'src/app/services/career-http.service';
+import { CourseHttpService } from 'src/app/services/course-http.service';
 import { RequestHttpService } from 'src/app/services/request-http.service';
+import { SchoolYearHttpService } from 'src/app/services/school-year-http.service';
+import { StatusHttpService } from 'src/app/services/status-http.service';
+import { SubjectHttpService } from 'src/app/services/subject-http.service';
 import { TeacherDistributiveHttpService } from 'src/app/services/teacher-distributive-http.service';
 
 @Component({
@@ -16,12 +24,20 @@ export class RequestComponent implements OnInit {
   request: RequestModel[] = [];
   teacherDistributive: TeacherDistributionModel[] = [];
   careers: CareerModel[] = [];
+  status: StatusModel[] = [];
+  subjects: SubjectModel[] = [];
+  courses: CourseModel[] = [];
+  schoolYear: SchoolYearModel[] = [];
   myForm: FormGroup;
   
   constructor(
     private requestHttpService: RequestHttpService, 
     private teacherDistributiveHttpService: TeacherDistributiveHttpService,
     private careerHttpService : CareerHttpService,
+    private statusHttpService : StatusHttpService,
+    private subjectHttpService : SubjectHttpService,
+    private courseHttpService : CourseHttpService,
+    private schoolYearHttpService : SchoolYearHttpService,
     private formBuilder: FormBuilder) { 
       this.myForm = this.newForm(); 
     }
@@ -30,6 +46,10 @@ export class RequestComponent implements OnInit {
       this.findAll();
       this.loadCareers();
       this.loadTeacherDistributive();
+      this.loadStatus();
+      this.loadSubjects();
+      this.loadCourses();
+      this.loadSchoolYear();
     }
 
   newForm(): FormGroup {
@@ -56,6 +76,38 @@ export class RequestComponent implements OnInit {
     this.careerHttpService.findAll().subscribe(
       Response => {
         this.careers = Response.data;
+      }
+    )
+  }
+
+  loadSchoolYear() {
+    this.schoolYearHttpService.findAll().subscribe(
+      Response => {
+        this.schoolYear = Response.data;
+      }
+    )
+  }
+
+  loadStatus() {
+    this.statusHttpService.findAll().subscribe(
+      Response => {
+        this.status = Response.data;
+      }
+    )
+  }
+
+  loadCourses() {
+    this.courseHttpService.findAll().subscribe(
+      Response => {
+        this.courses = Response.data;
+      }
+    )
+  }
+
+  loadSubjects() {
+    this.subjectHttpService.findAll().subscribe(
+      Response => {
+        this.subjects = Response.data;
       }
     )
   }
