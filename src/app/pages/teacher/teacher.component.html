@@ -1,92 +1,125 @@
-
 <div class="text-end mt-3">
-    <button type="button" class="btn-new" (click)="showDialog()">
-        Nuevo
-    </button>
-    <button type="button" class="btn-import">Importar</button>
+    <button class="btn-new" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud">Nuevo</button>
+    <button class="btn-import" data-bs-toggle="modal" data-bs-target="#modalImport">Importar</button>
 </div>
-    <p-dialog header=" Nueva Docente" [(visible)]="display" [breakpoints]=" {'960px': '75vw' , '640px' : '100vw' }"
-        [style]="{width: '50vw'}">
-        <div class="container text-start">
-            <form [formGroup]="myForm">
-                <div class="row justify-content-start mb-3">
-                    <div class="col-6">
-                        <label for=" Cedula" class="form-label">Cédula</label>
-                        <input type="cedula" class="form-control" id="idCard" aria-describedby="cedula"
-                            formControlName="idCard" required>
+<div class="modal fade" data-bs-backdrop="static" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Importar Solicitudes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <p>Descarga el archivo modelo, modifícalo e impórtalo nuevamente, para actualizar tus datos o
+                        insertar nuevas solicitudes.</p>
+                    <div class="d-grid gap-2 col-8 mx-auto">
+                        <button class="btn-download" type="button">Descargar Modelo <i
+                                class="bi bi-download icon-buttom"></i></button>
+                        <button class="btn-upload" type="button">Importar Modelo <i
+                                class="bi bi-upload icon-buttom"></i></button>
                     </div>
-                    <div class="col-6">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="nombre" class="form-control" id="name" aria-describedby="nombre"
-                            formControlName="name" required>
-                    </div>
+                    <br>
                 </div>
-                <div class="row justify-content-start mb-3">
-                    <div class="col-6">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="email"
-                            formControlName="email" required>
-                    </div>
-                    <div class="col-6">
-                        <label for="telefono" class="form-label">Telefono</label>
-                        <input type="telefono" class="form-control" id="telephone" aria-describedby="telefono"
-                            formControlName="telephone" required>
-                    </div>
-                </div>
-
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" required>
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
-                </div>
-            </form>
-        </div>
-        <ng-template pTemplate="footer">
-            <button type="submit" (click)=ocultarDialog() class="btn btn-primary">Cancelar</button>
-            <button type="submit" class="btn btn-primary" (click)="guardar()">Guardar</button>
-
-        </ng-template>
-    </p-dialog>
-    <div class="container text-center pb-3">
-        <div class="row align-items-center">
-            <div class="col-6 p-0">
-                <div class="input-group">
-                    <i class="input-group-text bi bi-search search"></i>
-                    <input type="text" class="form-control search-input" placeholder="Buscar" aria-label="Username">
-                    <!--Poner función para limpiar el input-->
-                    <button class="input-group-text close"><i class="bi bi-x-lg "></i></button>
-                    <button type="button" class="input-group-text btn-filter">Filtrar</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
-    <div>
-        <table class="table">
-            <thead class="table-dark">
-                <tr class="text-center">
-                    <th scope="col">Cédula</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Opciones</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="text-center" *ngFor="let teacher of teachers">
-                    <td>{{teacher.idCard}}</td>
-                    <td>{{teacher.name}}</td>
-                    <td>{{teacher.email}}</td>
-                    <td>{{teacher.telephone}}</td>
-                    <td class="form-switch align-items-center"><input class="form-check-input m-0" type="checkbox"></td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <i type="button" class=" bi bi-trash mx-2" data-bs-toggle="popover"></i>
-                            <i type="button" class="bi bi-pencil-square" (click)="showDialog()"></i>
+</div>
+<div class="modal fade" data-bs-backdrop="static" id="modalNuevaSolicitud" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Docente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="container text-start">
+                <form [formGroup]="myForm">
+                    <div class="row justify-content-start mb-3">
+                        <div class="col-6">
+                            <label for=" Cedula" class="form-label">Cédula</label>
+                            <input type="cedula" class="form-control" id="idCard" aria-describedby="cedula"
+                                formControlName="idCard" required>
                         </div>
-                    </td>
+                        <div class="col-6">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="nombre" class="form-control" id="name" aria-describedby="nombre"
+                                formControlName="name" required>
+                        </div>
+                    </div>
+                    <div class="row justify-content-start mb-3">
+                        <div class="col-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="email"
+                                formControlName="email" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="telefono" class="form-label">Telefono</label>
+                            <input type="telefono" class="form-control" id="telephone" aria-describedby="telefono"
+                                formControlName="telephone" required>
+                        </div>
+                    </div>
 
-                </tr>
-            </tbody>
-        </table>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                            required>
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn-new" (click)="guardar()">Guardar</button>
+            </div>
+        </div>
     </div>
+</div>
+<div class="container text-center pb-3">
+    <div class="row align-items-center">
+        <div class="col-6 p-0">
+            <div class="input-group">
+                <i class="input-group-text bi bi-search search"></i>
+                <input type="text" class="form-control search-input" placeholder="Buscar" aria-label="Username">
+                <!--Poner función para limpiar el input-->
+                <button class="input-group-text close"><i class="bi bi-x-lg"
+                        data-bs-target=" #modalImport"></i></button>
+                <button type=" button" class="input-group-text btn-filter">Filtrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <table class="table">
+        <thead class="table-dark">
+            <tr class="text-center">
+                <th scope="col">Cédula</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Opciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let teacher of teachers">
+                <td>{{teacher.idCard}}</td>
+                <td>{{teacher.name}}</td>
+                <td>{{teacher.email}}</td>
+                <td>{{teacher.telephone}}</td>
+                <td class="form-switch align-items-center"><input class="form-check-input m-0" type="checkbox"></td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <i type="button" class=" bi bi-trash mx-2" data-bs-toggle="popover"></i>
+                        <i type="button" class="bi bi-pencil-square"></i>
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
