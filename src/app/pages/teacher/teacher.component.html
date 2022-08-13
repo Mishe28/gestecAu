@@ -34,7 +34,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Nuevo Docente</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{tituloModal}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="container text-start">
@@ -44,11 +44,20 @@
                             <label for=" Cedula" class="form-label">Cédula</label>
                             <input type="cedula" class="form-control" id="idCard" aria-describedby="cedula"
                                 formControlName="idCard" required>
+                            <p-message *ngIf="idCardField.errors?.['required']" severity="error"
+                                text="Este campo es obligatorio">
+                            </p-message>
+                            <p-message *ngIf="idCardField.errors?.['pattern']" severity="error"
+                                text="Caracteres maximo 10">
+                            </p-message>
                         </div>
                         <div class="col-6">
                             <label for="nombre" class="form-label">Nombre</label>
                             <input type="nombre" class="form-control" id="name" aria-describedby="nombre"
                                 formControlName="name" required>
+                            <p-message *ngIf="nameField.errors?.['required']" severity="error"
+                                text="Este campo es obligatorio">
+                            </p-message>
                         </div>
                     </div>
                     <div class="row justify-content-start mb-3">
@@ -56,24 +65,35 @@
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" aria-describedby="email"
                                 formControlName="email" required>
+                            <p-message *ngIf="emailField.errors?.['required']" severity="error"
+                                text="Este campo es obligatorio">
+                            </p-message>
+                            <p-message *ngIf="emailField.errors?.['email']" severity="error"
+                                text="Tiene que ingresar un correo electronico">
+                            </p-message>
                         </div>
                         <div class="col-6">
                             <label for="telefono" class="form-label">Telefono</label>
                             <input type="telefono" class="form-control" id="telephone" aria-describedby="telefono"
                                 formControlName="telephone" required>
+                            <p-message *ngIf="telephoneField.errors?.['required']" severity="error"
+                                text="Este campo es obligatorio">
+                            </p-message>
                         </div>
                     </div>
-
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
-                            required>
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
+                    <div>
+                        <label class="form-label">Estado</label>
+                        <p-inputSwitch formControlName="stateAx" id="stateAx" (onChange)="prueba($event)">
+                        </p-inputSwitch>
+                        <p-message *ngIf="statusField.errors?.['required']" severity="error"
+                            text="Este campo es obligatorio">
+                        </p-message>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn-new" (click)="guardar()">Guardar</button>
+                <button type="button" class="btn-new" (click)="onSubmit()">Guardar</button>
             </div>
         </div>
     </div>
@@ -85,8 +105,7 @@
                 <i class="input-group-text bi bi-search search"></i>
                 <input type="text" class="form-control search-input" placeholder="Buscar" aria-label="Username">
                 <!--Poner función para limpiar el input-->
-                <button class="input-group-text close"><i class="bi bi-x-lg"
-                        data-bs-target=" #modalImport"></i></button>
+                <button class="input-group-text close"><i class="bi bi-x-lg" data-bs-target="#modalImport"></i></button>
                 <button type=" button" class="input-group-text btn-filter">Filtrar</button>
             </div>
         </div>
@@ -102,7 +121,6 @@
                 <th scope="col">Teléfono</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Opciones</th>
-
             </tr>
         </thead>
         <tbody>
@@ -111,14 +129,23 @@
                 <td>{{teacher.name}}</td>
                 <td>{{teacher.email}}</td>
                 <td>{{teacher.telephone}}</td>
-                <td class="form-switch align-items-center"><input class="form-check-input m-0" type="checkbox"></td>
+                <td>
+                    <p-tag [severity]="teacher.state?.name=== 'Activo' ? 'success' : 'warning'">
+                        {{teacher.state?.name}}
+                    </p-tag>
+                </td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <i type="button" class=" bi bi-trash mx-2" data-bs-toggle="popover"></i>
-                        <i type="button" class="bi bi-pencil-square"></i>
+                        <div>
+                            <i type="button" class=" bi bi-trash mx-2" (click)="delete(teacher.id!)"
+                                data-bs-toggle="popover"></i>
+                        </div>
+                        <div>
+                            <i type="button" class="bi bi-pencil-square" data-bs-toggle="modal"
+                                data-bs-target="#modalNuevaSolicitud" (click)="findOne(teacher.id!)"></i>
+                        </div>
                     </div>
                 </td>
-
             </tr>
         </tbody>
     </table>
