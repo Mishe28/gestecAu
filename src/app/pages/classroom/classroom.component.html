@@ -1,46 +1,53 @@
 <div class="text-end mt-3">
-        <button type="button" class="btn-new" (click)="showDialog()">
-            Nuevo
-        </button>
-        <button type="button" class="btn-import">Importar</button>
+    <button type="button" class="btn-new" (click)="showModal()">
+        Nuevo
+    </button>
+    <button type="button" class="btn-import">Importar</button>
 </div>
-<p-dialog header=" Nueva Aula" [(visible)]="display" [breakpoints]=" {'960px': '75vw' , '640px' : '100vw' }"
+<p-dialog header="{{tituloModal}}" [(visible)]="display" [breakpoints]=" {'960px': '75vw' , '640px' : '100vw' }"
     [style]="{width: '50vw'}">
     <div class="container text-start">
-        <form>
-            <div class="row justify-content-start mb-3">
-                <div class="col-4">
+        <form [formGroup]="myForm">
+            <div class=" grid p-fluid row justify-content-start mb-3">
+                <div class="col-6">
                     <label for=" nombre" class="form-label">Nombre</label>
-                    <input type="nombre" class="form-control" id="nombre" aria-describedby="nombre" required>
+                    <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="nombre">
+                    <p-message *ngIf="nameField.errors?.['required']" severity="error" text="Este campo es obligatorio">
+                    </p-message>
                 </div>
-                <div class="col-4">
-                    <label for="ubicacion" class="form-label">Ubicación</label>
-                    <select class="form-select" required aria-label="Default select example" required>
-                        <option selected></option>
-                        <option value="1">Cenepa</option>
-                        <option value="2">Edificio</option>
-                        <option value="3">Edificio 2</option>
-                    </select>
-                </div>
-                <div class="col-4">
+                <div class="col-6">
                     <label for="capacidad" class="form-label">Capacidad</label>
-                    <input type="number" class="form-control" id="capacidad" aria-describedby="capacidad" required>
+                    <input type="number" formControlName="capacity" class="form-control" id="capacity"
+                        aria-describedby="capacidad">
+                    <p-message *ngIf="capacityField.errors?.['required']" severity="error"
+                        text="Este campo es obligatorio">
+                    </p-message>
                 </div>
             </div>
-            <div class="mb-3">
-                <label for="descripcion" class="form-label">Descripción</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" required>
-                <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
+            <div class="row justify-content-start mb-3">
+                <div class="col-6">
+                    <label for="ubicacion" class="form-label">Ubicación</label>
+                    <p-dropdown id="school" formControlName="location" [options]="locations" formControlName="location"
+                        optionLabel="buildingName">
+                    </p-dropdown>
+                    <p-message *ngIf="locationField.errors?.['required']" severity="error"
+                        text="Este campo es obligatorio">
+                    </p-message>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Estado</label>
+                    <p-inputSwitch formControlName="stateAx" id="stateAx" (onChange)="prueba($event)">
+                    </p-inputSwitch>
+                    <p-message *ngIf="statusField.errors?.['required']" severity="error"
+                        text="Este campo es obligatorio">
+                    </p-message>
+                </div>
             </div>
         </form>
     </div>
     <ng-template pTemplate="footer">
-        <button type="submit" (click)=ocultarDialog() class="btn btn-primary">Cancelar</button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-
+        <button type="submit" (click)=ocultarModal() class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn-new" (click)=onSubmit()>Guardar</button>
     </ng-template>
 </p-dialog>
 <div class="container text-center pb-3">
@@ -61,28 +68,29 @@
         <thead class="table-dark">
             <tr class="text-center">
                 <th scope="col">Nombre</th>
-                <th scope="col">Descripción</th>
                 <th scope="col">Ubicación</th>
                 <th scope="col">Capacidad</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Opciones</th>
-
             </tr>
         </thead>
         <tbody>
-            <tr class="text-center">
-                <td>Aula 1</td>
-                <td>Descripción 1</td>
-                <td>Cenepa</td>
-                <td>20</td>
-                <td class="form-switch align-items-center"><input class="form-check-input m-0" type="checkbox"></td>
+            <tr class="text-center" *ngFor="let classroom of classrooms">
+                <td>{{classroom.name}}</td>
+                <td>{{classroom.location?.buildingName}}</td>
+                <td>{{classroom.capacity}}</td>
+                <td>
+                    <p-tag [severity]="classroom.state?.name=== 'Activo' ? 'success' : 'warning'">
+                        {{classroom.state?.name}}
+                    </p-tag>
+                </td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <i type="button" class="bi bi-pencil-square icon" (click)="showDialog()"></i>
-                        <i type="button" class=" bi bi-trash mx-2 icon" data-bs-toggle="popover"></i>
+                        <i type="button" class=" bi bi-trash mx-2 icon" (click)="delete(classroom.id!)"
+                            data-bs-toggle="popover"></i>
+                        <i type="button" class="bi bi-pencil-square icon" (click)="findOne(classroom.id!)"></i>
                     </div>
                 </td>
-
             </tr>
         </tbody>
     </table>
