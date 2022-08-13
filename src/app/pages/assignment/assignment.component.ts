@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./assignment.component.css']
 })
 export class AssignmentComponent implements OnInit {
-
+  titulo='#000'
   constructor() { }
 
   ngOnInit(): void {

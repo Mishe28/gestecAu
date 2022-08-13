@@ -18,7 +18,7 @@ export class TeacherHttpService {
   findAll(): Observable<any> {
     return this.httpClient.get<ResponseModel>(this.HOST)
   }
-  
+
   findOne(id: number): Observable<any> {
     return this.httpClient.get<ResponseModel>(`${this.HOST}/${id}`)
   }
