@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router'; 
 import { AdminLayoutRoutes } from './adminlayout-routing.module';
 import { DashboardComponent } from 'src/app/pages/dashboard/dashboard.component';
 import { SettingsComponent } from 'src/app/pages/settings/settings.component';

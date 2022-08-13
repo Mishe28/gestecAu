@@ -1,0 +1,25 @@
+.content{
+    margin-top: 40px;
+}
+.bg-warning{
+    padding: 5px 15px;
+}
+.a-dash{
+    text-decoration: none;
+}
+.card{
+    border: none;
+}
+.num{
+    color: #000;
+}
+.card-body{
+    border: solid 5px #010326;
+    border-radius: 15px;
+    padding: 30px 25px;
+    margin: 15px;
+}
+.card-title{
+    margin-top: 10px;
+    font-size: 18px;
+}

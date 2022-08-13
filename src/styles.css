@@ -2,9 +2,58 @@
 body{
     font-family: 'Roboto', sans-serif;
 }
-.btn-new{
+.btn-new {
     background-color: #38b6ff;
-}
-.btn.import{
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    height: 35px;
+  }
+.btn-import{
+    background-color: #7ed957;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    height: 35px;
 
+}
+.btn-filter{
+    background-color: #FFBE5C;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    height: 35px;
+}
+.icon{
+    font-size: 20px;
+}
+
+.btn-cancelar{
+    background-color: #B8B9BB;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    height: 35px;
+}
+.btn-download{
+    background-color: #FFBD59;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    height: 60px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+.btn-upload{
+    background-color: #38B6FF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    height: 60px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+.icon-buttom{
+    font-size: 25px;
+    margin-left: 15px;
 }
