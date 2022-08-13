@@ -15,12 +15,11 @@
         </div>
     </div>
 </div>
-
 <!-- Tabla Index -->
 <div>
     <table class="table" aria-label="Table-request">
         <thead class="table-dark">
-            <tr class="text-center">
+            <tr>
                 <th scope="col">Código</th>
                 <th scope="col">Curso</th>
                 <th scope="col">Asignatura</th>
@@ -31,7 +30,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="text-center">
+            <tr>
                 <td>Aula 1</td>
                 <td>Descripción 1</td>
                 <td>Cenepa</td>
@@ -39,12 +38,11 @@
                 <td>APROBADO</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <i type="button" class="bi bi-eye icon"></i>
+                        <i type="button" class="bi bi-eye icon" data-bs-toggle="modal" data-bs-target="#modalDetail"></i>
                         <i type="button" class="bi bi-pencil-square mx-2 icon" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud"></i>
                         <i type="button" class=" bi bi-trash mx-2 icon " data-bs-toggle="popover"></i>
                     </div>
                 </td>
-
             </tr>
         </tbody>
     </table>
@@ -156,6 +154,32 @@
                         <button class="btn-upload" type="button">Importar Modelo <i class="bi bi-upload icon-buttom"></i></button>
                     </div>
                     <br>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal View -->
+<div class="modal fade" data-bs-backdrop="static" id="modalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalle Solicitud</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <p><strong>Carrera:</strong> </p>
+                    <p><strong>Curso:</strong> </p>
+                    <p><strong>Asignatura:</strong> </p>
+                    <p><strong>Horas Semanales:</strong> </p>
+                    <p><strong>Docente:</strong> </p>
+                    <p><strong>Fecha:</strong> </p>
+                    <button class="btn-import">APROBADO</button>
                 </div>
             </div>
             <div class="modal-footer">

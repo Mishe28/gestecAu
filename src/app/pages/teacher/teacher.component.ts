@@ -18,7 +18,7 @@ export class TeacherComponent implements OnInit {
   newForm(): FormGroup {
     return this.formBuilder.group({
       name: [null,],
-      state: [1,],
+      state: [1],
       telephone: [null,],
       email: [null,],
       idCard: [null,],
