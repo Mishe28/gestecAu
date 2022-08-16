@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CourseModel } from 'src/app/models/course.model';
 import { CourseHttpService } from 'src/app/services/course-http.service';
 
 @Component({
@@ -7,6 +8,8 @@ import { CourseHttpService } from 'src/app/services/course-http.service';
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
+  title='Cursos';
+  courses: CourseModel[] = [];
 
   constructor(private courseHttpService: CourseHttpService) {}
 
@@ -16,6 +19,7 @@ export class CourseComponent implements OnInit {
 
   findAll() {
     this.courseHttpService.findAll().subscribe(response => {
+      this.courses = response.data;
       console.log(response);
     });
   }

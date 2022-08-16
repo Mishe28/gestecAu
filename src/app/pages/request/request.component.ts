@@ -70,6 +70,7 @@ export class RequestComponent implements OnInit {
         this.teacherDistributive = Response.data;
       }
     )
+
   }
 
   loadCareers() {
@@ -134,6 +135,7 @@ export class RequestComponent implements OnInit {
 
   findOne(id: number) {
     this.requestHttpService.findOne(id).subscribe(response => {
+      this.myForm.patchValue(response.data);
       this.request = response.data;
     });
   }

@@ -2,6 +2,7 @@
     <button class="btn-new" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud">Nueva Solicitud</button>
     <button class="btn-import" data-bs-toggle="modal" data-bs-target="#modalImport">Importar</button>
 </div>
+
 <div class="container text-center mb-3 mb-s">
     <div class="row align-items-center">
         <div class="col-6 p-0">
@@ -27,19 +28,18 @@
                 <th scope="col">Cant. Horas</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Opciones</th>
-
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let request of request">
+            <tr *ngFor="let request of request" class="text-center">
                 <td>{{request.id}} </td>
-                <td>{{request.teacherDistribution?.course?.id}} </td>
-                <td>{{request.teacherDistribution}} </td>
+                <td>{{request.teacherDistribution?.course?.name}} </td>
+                <td>{{request.teacherDistribution?.subject?.name}} </td>
                 <td>{{request.totalHoursRequested}} </td>
                 <td>{{request.state?.name}} </td>
-                <td class="text-center">
+                <td>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <i type="button" class="bi bi-eye icon" data-bs-toggle="modal" data-bs-target="#modalDetail"></i>
+                        <!--<i type="button" class="bi bi-eye icon" data-bs-toggle="modal" data-bs-target="#modalDetail" (click)="findOne(request.id!)"></i>-->
                         <i type="button" class="bi bi-pencil-square mx-2 icon" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud" ></i>
                         <i type="button" class=" bi bi-trash mx-2 icon " data-bs-toggle="popover" (click)="delete(request.id!)"></i>
                     </div>
@@ -56,30 +56,31 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Solicitud</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+            </div> 
             <div class="modal-body">
                 <div class="container">
                     <form [formGroup]="myForm">
-                        <!--
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label class="form-label" for="id">N° Solicitud</label>
-                                <input type="text" class="form-control" id="id"  value="1" formControlName="id">
-                            </div>
-                        </div>-->
-                        <br>
                         <div class="row">
                             <div class="col-md-2">
                                 <label for="periodo" class="form-label">Periodo</label>
-                                <p-dropdown id="career" [options]="schoolYear" formControlName="careersss" optionLabel="name"></p-dropdown>
+                                <select class="form-select" name="" id="">
+                                    <option selected> Selecciona</option>
+                                    <option *ngFor="let schoolYear of schoolYear " [value]="schoolYear.id" >{{schoolYear.name}} </option>
+                                </select>
                             </div>
                             <div class="col-md-5">
                                 <label for="carrera" class="form-label">Carrera</label>
-                                <p-dropdown id="career" [options]="careers" formControlName="careersss" optionLabel="name"></p-dropdown>
+                                <select class="form-select" name="" id="">
+                                    <option selected> Selecciona</option>
+                                    <option *ngFor="let career of careers " [value]="careers" >{{career.name}} </option>
+                                </select>
                             </div>
                             <div class="col-md-5">
                                 <label for="distributivo" class="form-label">Distributivo Docente</label>
-                                <p-dropdown id="career" [options]="teacherDistributive" formControlName="careersss" optionLabel="name"></p-dropdown>
+                                <select class="form-select" name="" id="">
+                                    <option selected> Selecciona</option>
+                                    <option *ngFor="let td of teacherDistributive " [value]="teacherDistributive" >{{td.name}} </option>
+                                </select>
                             </div>
                         </div>
                         <br>
@@ -92,9 +93,19 @@
                                 <label for="date2" class="form-label">Fecha Fin</label>
                                 <input  class="form-control"type="date" name="" id="endDate" formControlName="endDate">
                             </div>
-                            
+                            <div class="col-md-4">
+                                <label for="course" class="form-label">Horas Semanales</label>
+                                <input class="form-control" type="number" name="" id="hour" formControlName="hour">
+                            </div>
+                            <!--
+                            <div class="col-md-4">
+                                <label for="subject" class="form-label">Curso</label>
+                                <input class="form-control" type="text" disabled id="subject" >
+                            </div>
+                            -->
                         </div>
                         <br>
+                        <!--
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="subject" class="form-label">Asignatura</label>
@@ -109,6 +120,7 @@
                                 <input class="form-control" type="number" name="" id="hour" formControlName="hour">
                             </div>
                         </div>
+                        -->
                         <br>
                     </form>
                 </div>
