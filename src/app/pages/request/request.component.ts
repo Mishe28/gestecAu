@@ -54,13 +54,15 @@ export class RequestComponent implements OnInit {
 
   newForm(): FormGroup {
     return this.formBuilder.group({
-      date: [null, Validators.required],
-      totalHoursRequested: [null, Validators.required, Validators.min(0)],
-      startDate: [null,Validators.required],
-      endDate: [null,Validators.required],
-      career: [null,Validators.required],
-      teacherDistribution: [null,Validators.required],
-      status:[4],
+      date:['now()'],
+      id: [null],
+      totalHoursRequested: [null, [Validators.required]],
+      //schoolYear: [null, [Validators.required]],
+      startDate: [null,[Validators.required]],
+      endDate: [null,[Validators.required]],
+      career: [null,[Validators.required]],
+      teacherDistribution: [null,[Validators.required]],
+      state:[4],
     })
   }
 
@@ -114,15 +116,18 @@ export class RequestComponent implements OnInit {
   }
 
   guardar() {
+    const data=this.myForm.getRawValue();
+    delete data.id;
     if (this.myForm.valid) {
       if (this.idField.value) {
-        this.update();
+        this.update(this.idField.value, data);
       } else {
-        this.create();
+        this.create(data);
       }
       this.myForm.reset();
     } else {
       alert('El formulario no es valido');
+      console.log(data);
     }
   }
 
@@ -139,14 +144,14 @@ export class RequestComponent implements OnInit {
       this.request = response.data;
     });
   }
-  create() {
-    this.requestHttpService.create(this.myForm.value).subscribe(response => {
-      this.findAll()
+  create(data:any) {
+    this.requestHttpService.create(data).subscribe(response => {
+      this.findAll();
     });
   }
 
-  update() {
-    this.requestHttpService.update(this.idField.value, this.myForm.value).subscribe(response => {
+  update(id:number, data:any) {
+    this.requestHttpService.update(id, data).subscribe(response => {
       this.findAll();
     });
   }
@@ -164,7 +169,7 @@ export class RequestComponent implements OnInit {
     return this.myForm.controls['career'];
   }
   get teacherDistributiveField() {
-    return this.myForm.controls['teacherDistributive'];
+    return this.myForm.controls['teacherDistribution'];
   }
   get startDateField() {
     return this.myForm.controls['startDate'];
@@ -173,7 +178,10 @@ export class RequestComponent implements OnInit {
     return this.myForm.controls['endDate'];
   }
   get hourField() {
-    return this.myForm.controls['hour'];
+    return this.myForm.controls['totalHoursRequested'];
   }
+  /*get schoolYearField() {
+    return this.myForm.controls['schoolYear'];
+  }*/
 
 }

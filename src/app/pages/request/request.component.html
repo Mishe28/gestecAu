@@ -40,7 +40,7 @@
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <!--<i type="button" class="bi bi-eye icon" data-bs-toggle="modal" data-bs-target="#modalDetail" (click)="findOne(request.id!)"></i>-->
-                        <i type="button" class="bi bi-pencil-square mx-2 icon" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud" ></i>
+                        <i type="button" class="bi bi-pencil-square mx-2 icon" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud" (click)="findOne(request.id!)"></i>
                         <i type="button" class=" bi bi-trash mx-2 icon " data-bs-toggle="popover" (click)="delete(request.id!)"></i>
                     </div>
                 </td>
@@ -61,25 +61,26 @@
                 <div class="container">
                     <form [formGroup]="myForm">
                         <div class="row">
+                             <!--
                             <div class="col-md-2">
                                 <label for="periodo" class="form-label">Periodo</label>
-                                <select class="form-select" name="" id="">
+                                
+                                <select class="form-select" name="" id="" formControlName="schoolYear">
                                     <option selected> Selecciona</option>
-                                    <option *ngFor="let schoolYear of schoolYear " [value]="schoolYear.id" >{{schoolYear.name}} </option>
+                                    <option *ngFor="let sY of schoolYear " [ngValue]="sY.id" >{{sY.name}} </option>
                                 </select>
                             </div>
+                            -->
                             <div class="col-md-5">
                                 <label for="carrera" class="form-label">Carrera</label>
-                                <select class="form-select" name="" id="">
-                                    <option selected> Selecciona</option>
-                                    <option *ngFor="let career of careers " [value]="careers" >{{career.name}} </option>
+                                <select class="form-select" name="" id="" formControlName="career">
+                                    <option *ngFor="let career of careers " [ngValue]="career.id" >{{career.name}} </option>
                                 </select>
                             </div>
                             <div class="col-md-5">
-                                <label for="distributivo" class="form-label">Distributivo Docente</label>
-                                <select class="form-select" name="" id="">
-                                    <option selected> Selecciona</option>
-                                    <option *ngFor="let td of teacherDistributive " [value]="teacherDistributive" >{{td.name}} </option>
+                                <label for="distributivo" class="form-label" >Distributivo Docente</label>
+                                <select class="form-select" name="" id="" formControlName="teacherDistribution">
+                                    <option *ngFor="let td of teacherDistributive " [ngValue]="td.id" >{{td.name}} </option>
                                 </select>
                             </div>
                         </div>
@@ -95,7 +96,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="course" class="form-label">Horas Semanales</label>
-                                <input class="form-control" type="number" name="" id="hour" formControlName="hour">
+                                <input class="form-control" type="number" name="" id="hour" formControlName="totalHoursRequested">
                             </div>
                             <!--
                             <div class="col-md-4">
