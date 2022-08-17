@@ -10,11 +10,13 @@
                 <div class="col-md-3">
                     <select class="form-select col-2" name="" id="">
                         <option selected>Carrera</option>
+                        <option *ngFor="let career of careers " [ngValue]="career.id" >{{career.name}} </option>
                     </select>
                 </div>
                 <div class="col-md-3">
                     <select class="form-select" name="" id="">
                         <option selected>Nivel</option>
+                        <option *ngFor="let level of levels " [ngValue]="level.id" >{{level.name}} </option>
                     </select>
                 </div>
                 <div class="col-md-6">
@@ -142,52 +144,58 @@
                             <div class="col-md-4">
                                 <label for="color" class="form-label">Color</label>
                                 <div class="input-group">
-                                <input class=" btn-color" type="button" name="" id="" style="background-color: #ffbe5c; border-radius: 15px;" value="#ffbe5c" >
-                                <input class=" btn-color" type="button" name="" id="" style="background-color: #7ed957; border-radius: 15px;" value="#7ed957">
-                                <input class=" btn-color" type="button" name="" id="" style="background-color: #38b6ff; border-radius: 15px;" value="#38b6ff">
-                                <input class=" btn-color" type="button" name="" id="" style="background-color: #8C52FF; border-radius: 15px;" value="#8C52FF">
-                                <input class=" btn-color" type="button" name="" id="" style="background-color: #c9e265; border-radius: 15px;" value="#c9e265">
-                                <input class=" btn-color" type="button" name="" id="" style="background-color: #FDD440; border-radius: 15px;" value="#FDD440">
-                                <input class=" form-control-color color" type="color" name="" id="" value="#CC458F">
+                                    <input class=" btn-color" type="button" name="" id=""
+                                        style="background-color: #ffbe5c; border-radius: 15px;" value="#ffbe5c">
+                                    <input class=" btn-color" type="button" name="" id=""
+                                        style="background-color: #7ed957; border-radius: 15px;" value="#7ed957">
+                                    <input class=" btn-color" type="button" name="" id=""
+                                        style="background-color: #38b6ff; border-radius: 15px;" value="#38b6ff">
+                                    <input class=" btn-color" type="button" name="" id=""
+                                        style="background-color: #8C52FF; border-radius: 15px;" value="#8C52FF">
+                                    <input class=" btn-color" type="button" name="" id=""
+                                        style="background-color: #c9e265; border-radius: 15px;" value="#c9e265">
+                                    <input class=" btn-color" type="button" name="" id=""
+                                        style="background-color: #FDD440; border-radius: 15px;" value="#FDD440">
+                                    <input class=" form-control-color color" type="color" name="" id="" value="#CC458F">
                                 </div>
                             </div>
                             <div class="col-md-2"></div>
                             <div class="col-md-2">
-                                <button class="btn-import btn-i">Agregar al horario</button>
+                                <button class="btn-import btn-i" >Agregar al horario</button>
                             </div>
                         </div>
                         <br>
                         <h3>Nombre Aula</h3>
                         <table class="table" aria-label="table-schedule">
                             <thead class="table-dark">
-                              <tr>
-                                <th>Hora</th>
-                                <th>Lunes</th>
-                                <th>Martes</th>
-                                <th>Miércoles</th>
-                                <th>Jueves</th>
-                                <th>Viernes</th>
-                              </tr>
+                                <tr>
+                                    <th>Hora</th>
+                                    <th>Lunes</th>
+                                    <th>Martes</th>
+                                    <th>Miércoles</th>
+                                    <th>Jueves</th>
+                                    <th>Viernes</th>
+                                </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>07:00-08:00</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>...</td>
-                              </tr>
-                              <tr>
-                                <td>08:00-09:00</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>...</td>
-                              </tr>
+                                <tr>
+                                    <td>07:00-08:00</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td>08:00-09:00</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
                             </tbody>
-                          </table>
+                        </table>
                     </form>
                 </div>
             </div>
@@ -200,8 +208,8 @@
 </div>
 
 <!-- Modal Configurar Horas -->
-<div class="modal fade" data-bs-backdrop="static" id="modalConfigHours" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" data-bs-backdrop="static" id="modalConfigHours" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -227,7 +235,8 @@
                                 <td><input class="form-control num-hour" type="number" name="" id=""></td>
                                 <td><input class="form-control num-hour" type="number" name="" id=""></td>
                                 <td><input class="form-control num-hour" type="number" name="" id=""></td>
-                                <td class="text-center"><i type="button" class="fa-regular fa-floppy-disk icon-save"></i></td>
+                                <td class="text-center"><i type="button"
+                                        class="fa-regular fa-floppy-disk icon-save"></i></td>
                             </tr>
                         </tbody>
                     </table>
@@ -243,7 +252,7 @@
 <!-- Modal Solicitudes -->
 <div class="modal fade" data-bs-backdrop="static" id="modalSolicitud" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Solicitud de Asignación de Aula</h5>
@@ -251,19 +260,21 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <table class="table" aria-label="table-modal-conf-hour">
+                    <table class="table text-center" aria-label="table-modal-conf-hour">
                         <thead class="table-light">
                             <tr class="text-center">
                                 <th>Código</th>
-                                <th>Estado</th>
+                                <th>Curso</th>
+                                <th>Cant. Horas</th>
                                 <th>Solicitud</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngFor="let request of request">
                             <tr>
-                                <td>...</td>
-                                <td>...</td>
-                                <td class="text-center"><button class="btn-solicitud">Ver Solicitud</button></td>
+                                <td>{{request.id}} </td>
+                                <td>{{request.teacherDistribution?.name}} </td>
+                                <td>{{request.totalHoursRequested}} </td>
+                                <td class="text-center"><button class="btn-import" data-bs-toggle="modal" data-bs-target="#modalNuevaAsignación">Asignar</button></td>
                             </tr>
                         </tbody>
                     </table>

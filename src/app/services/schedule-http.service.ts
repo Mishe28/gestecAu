@@ -9,7 +9,7 @@ import { ResponseModel } from '../models/response.model';
 })
 
 export class ScheduleHttpService {
-  HOST = `${environment.HOST}Request`;
+  HOST = `${environment.HOST}schedule-configurations`;
   constructor(private httpClient: HttpClient) { }
 
   findAll(): Observable<any> {
