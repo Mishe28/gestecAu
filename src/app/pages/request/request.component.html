@@ -61,27 +61,25 @@
                 <div class="container">
                     <form [formGroup]="myForm">
                         <div class="row">
+                             <!--
                             <div class="col-md-2">
-                                <!--
                                 <label for="periodo" class="form-label">Periodo</label>
                                 
                                 <select class="form-select" name="" id="" formControlName="schoolYear">
                                     <option selected> Selecciona</option>
                                     <option *ngFor="let sY of schoolYear " [ngValue]="sY.id" >{{sY.name}} </option>
                                 </select>
-                            -->
                             </div>
+                            -->
                             <div class="col-md-5">
                                 <label for="carrera" class="form-label">Carrera</label>
                                 <select class="form-select" name="" id="" formControlName="career">
-                                    <option selected> Selecciona</option>
-                                    <option *ngFor="let career of careers " [ngValue]="career.id" >{{career.id}} </option>
+                                    <option *ngFor="let career of careers " [ngValue]="career.id" >{{career.name}} </option>
                                 </select>
                             </div>
                             <div class="col-md-5">
                                 <label for="distributivo" class="form-label" >Distributivo Docente</label>
                                 <select class="form-select" name="" id="" formControlName="teacherDistribution">
-                                    <option selected> Selecciona</option>
                                     <option *ngFor="let td of teacherDistributive " [ngValue]="td.id" >{{td.name}} </option>
                                 </select>
                             </div>
