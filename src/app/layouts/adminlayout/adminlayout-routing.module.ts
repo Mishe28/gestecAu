@@ -17,10 +17,10 @@ import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.co
 import { UserComponent } from 'src/app/pages/user/user.component';
 
 export const AdminLayoutRoutes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'user-profile', component: UserProfileComponent },
-  { path: 'settings', component: SettingsComponent },
-  { path: 'career', component: CareerComponent },
+  { path: 'dashboard', component: DashboardComponent, title:'Dashboard' },
+  { path: 'user-profile', component: UserProfileComponent, title:'Perfil de Usuario' },
+  { path: 'settings', component: SettingsComponent, title:'Ajustes' },
+  { path: 'career', component: CareerComponent, title:'Carreras' },
   { path: 'teacher', component: TeacherComponent },
   { path: 'course', component: CourseComponent },
   { path: 'day', component: DayComponent },

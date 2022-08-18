@@ -10,7 +10,6 @@ import { RouterModule } from '@angular/router';
 import { CoordinatorlayoutComponent } from './layouts/coordinatorlayout/coordinatorlayout/coordinatorlayout.component';
 import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import { FilterPipe } from './pipes/filter.pipe';
     AdminLayoutComponent,
     AuthLayoutComponent,
     CoordinatorlayoutComponent,
-    FilterPipe,
   ],
   imports: [
     BrowserModule,

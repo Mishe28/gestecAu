@@ -1,40 +1,37 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ResponseModel } from '../models/response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserHttpService {
 
-    API_URL: string;
+  HOST = `${environment.HOST}Users`;
+  constructor(private httpClient: HttpClient) { }
 
-    constructor(private httpClient: HttpClient) {
-      this.API_URL = environment.HOST;
-    }
-  
-    findAll() {
-      const url = `${this.API_URL}/users`
-      return this.httpClient.get(url);
-    }
-  
-    findOne(id: number) {
-      const url = `${this.API_URL}/users/${id}`
-      return this.httpClient.get(url);
-    }
-  
-    create(payload: any) {
-      const url = `${this.API_URL}/users`
-      return this.httpClient.post(url, payload);
-    }
-  
-    update(id: number, payload: any) {
-      const url = `${this.API_URL}/users/${id}`
-      return this.httpClient.put(url, payload);
-    }
-  
-    delete(id: number) {
-      const url = `${this.API_URL}/users/${id}`
-      return this.httpClient.delete(url);
-    }
+  findAll(): Observable<any> {
+    return this.httpClient.get<ResponseModel>(this.HOST)
+  }
+
+  findOne(id: number): Observable<any> {
+    return this.httpClient.get<ResponseModel>(`${this.HOST}/${id}`)
+  }
+
+  create(payload: any): Observable<any> {
+    const url = `${this.HOST}`;
+    return this.httpClient.post<ResponseModel>(url, payload);
+  }
+
+  update(id: number, payload: any): Observable<any> {
+    const url = `${this.HOST}/${id}`;
+    return this.httpClient.put<ResponseModel>(url, payload);
+  }
+
+  delete(id: number): Observable<any> {
+    const url = `${this.HOST}/${id}`;
+    return this.httpClient.delete<ResponseModel>(url);
+  }
 }

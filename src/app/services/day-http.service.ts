@@ -1,40 +1,36 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import { ResponseModel } from '../models/response.model';
+import { DayModel } from '../models/day.model';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DayHttpService {
-  API_URL: string;
+  HOST = `${environment.HOST}Days`;
 
   constructor(private httpClient: HttpClient) {
-    this.API_URL = environment.HOST;
   }
 
   findAll() {
-    const url = `${this.API_URL}/days`
-    return this.httpClient.get(url);
+    return this.httpClient.get<ResponseModel>(this.HOST)
   }
 
   findOne(id: number) {
-    const url = `${this.API_URL}/days/${id}`
-    return this.httpClient.get(url);
+    return this.httpClient.get<ResponseModel>(`${this.HOST}/${id}`)
   }
 
-  create(payload: any) {
-    const url = `${this.API_URL}/days`
-    return this.httpClient.post(url, payload);
+  create(payload: DayModel) {
+    return this.httpClient.post<ResponseModel>(this.HOST, payload);
   }
 
-  update(id: number, payload: any) {
-    const url = `${this.API_URL}/days/${id}`
-    return this.httpClient.put(url, payload);
+  update(id: number, payload: DayModel) {
+    return this.httpClient.put<ResponseModel>(`${this.HOST}/${id}`, payload);
   }
 
   delete(id: number) {
-    const url = `${this.API_URL}/days/${id}`
-    return this.httpClient.delete(url);
+    return this.httpClient.delete<ResponseModel>(`${this.HOST}/${id}`);
   }
 }

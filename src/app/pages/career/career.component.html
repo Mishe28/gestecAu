@@ -1,13 +1,7 @@
-<div class="col-10 p-0">
-    <!-- <div class="container text-center"> -->
-    <!-- <div class="row justify-content-end"> -->
-    <h1>Carreras</h1>
-</div>
-
 <div class="text-end mt-3">
     <button class="btn-new" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud">Nuevo</button>
 </div>
-
+<br>
 <div class="modal fade" data-bs-backdrop="static" id="modalNuevaSolicitud" tabindex="-1"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -44,14 +38,6 @@
                         <input type="file" class="form-control" id="nombre" aria-describedby="nombre" required>
 
                     </div>
-                    <div>
-                        <label class="form-label">Estado</label>
-                        <p-inputSwitch formControlName="stateAx" id="stateAx" (onChange)="prueba($event)">
-                        </p-inputSwitch>
-                        <p-message *ngIf="statusField.errors?.['required']" severity="error"
-                            text="Este campo es obligatorio">
-                        </p-message>
-                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -63,13 +49,15 @@
 </div>
 
 <div class="row">
-    <p-card *ngFor="let career of careers" class="col-md-4 card">
+    <p-card *ngFor="let career of careers" class="col-md-3 card">
         <div class="card1 text-center">
-            <img src="{{career.image}}" class="img-top">
-            <h2>{{career.name}}</h2>
-            <h5> <i class="bi bi-hourglass-split"></i> Tiempo de duración {{career.durationTime}} semestres</h5>
-            <br>
-            <a href="#/pages/subject" class="btn btn-import ">Ingresar Asignaturas</a>
+            <div class="card-cont">
+                <img src="{{career.image}}" class="img-top">
+            <h4 class="title">{{career.name}}</h4>
+            <h6> <i class="bi bi-hourglass-split"></i> Tiempo de duración {{career.durationTime}} semestres</h6>
+            <a href="#/pages/subject" class="btn btn-import ">Agregar Asignaturas</a>
+            </div>
+            <hr>
             <i type="button" class="bi bi-pencil-square mx-2 icon"></i>
             <i type="button" class=" bi bi-trash mx-2 icon "></i>
         </div>
