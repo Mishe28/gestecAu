@@ -26,10 +26,12 @@
             </div>
             <div class="row justify-content-start mb-3">
                 <div class="col-6">
-                    <label for="ubicacion" class="form-label">Ubicación</label>
-                    <p-dropdown id="school" formControlName="location" [options]="locations" formControlName="location"
-                        optionLabel="buildingName">
-                    </p-dropdown>
+                    <label for="location" class="form-label">Ubicación</label>
+                    <select class="form-select" name="location" formControlName="location">
+                        <option *ngFor=" let location of locations" [ngValue]="location">
+                            {{location.buildingName}}
+                        </option>
+                    </select>
                     <p-message *ngIf="locationField.errors?.['required']" severity="error"
                         text="Este campo es obligatorio">
                     </p-message>
@@ -55,7 +57,8 @@
         <div class="col-6 p-0">
             <div class="input-group">
                 <i class="input-group-text bi bi-search search"></i>
-                <input type="text" class="form-control search-input" placeholder="Buscar" aria-label="Username">
+                <input type="text" class="form-control search-input" name="searchText" placeholder="Buscar"
+                    aria-label="Username" [(ngModel)]="searchText">
                 <!--Poner función para limpiar el input-->
                 <button class="input-group-text close"><i class="bi bi-x-lg "></i></button>
                 <button type="button" class="input-group-text btn-filter">Filtrar</button>
@@ -75,7 +78,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="text-center" *ngFor="let classroom of classrooms">
+            <tr class="text-center" *ngFor="let classroom of classrooms  | filter:searchText">
                 <td>{{classroom.name}}</td>
                 <td>{{classroom.location?.buildingName}}</td>
                 <td>{{classroom.capacity}}</td>

@@ -24,7 +24,7 @@ export class ClassroomComponent implements OnInit {
 
   display: boolean = false;
   tituloModal: string = 'Nuevo Aulas';
-
+  searchText: any;
   newForm(): FormGroup {
     return this.formBuilder.group({
       id: [null],
@@ -35,7 +35,10 @@ export class ClassroomComponent implements OnInit {
       stateAx: [false,],
     })
   }
-
+  // filtrar(event: Event) {
+  //   const filtro = (event.target as HTMLInputElement).value;
+  //   this.classrooms.filter = filtro.trim().toLowerCase();
+  // }
   showModal() {
     this.tituloModal = 'Nueva Aula'
     this.display = true;

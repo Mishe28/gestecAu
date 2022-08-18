@@ -25,6 +25,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MessageModule } from 'primeng/message';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { TagModule } from 'primeng/tag';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { TagModule } from 'primeng/tag';
     SettingsComponent,
     UserProfileComponent,
     AssignmentComponent,
-    TeacherDistributiveComponent
+    TeacherDistributiveComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -56,6 +57,7 @@ import { TagModule } from 'primeng/tag';
     MessageModule,
     InputSwitchModule,
     TagModule,
+    Ng2SearchPipeModule,
     RouterModule.forChild(AdminLayoutRoutes),
   ]
 })
