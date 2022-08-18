@@ -25,8 +25,6 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MessageModule } from 'primeng/message';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { TagModule } from 'primeng/tag';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
 @NgModule({
   declarations: [
     CareerComponent,
@@ -57,7 +55,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MessageModule,
     InputSwitchModule,
     TagModule,
-    Ng2SearchPipeModule,
     RouterModule.forChild(AdminLayoutRoutes),
   ]
 })

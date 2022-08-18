@@ -1,64 +1,71 @@
 <div class="text-end mt-3">
-    <button type="button" class="btn-new" (click)="showModal()">
-        Nuevo
-    </button>
+    <button class="btn-new" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud">Nuevo</button>
     <button type="button" class="btn-import">Importar</button>
 </div>
-<p-dialog header="{{tituloModal}}" [(visible)]="display" [breakpoints]=" {'960px': '75vw' , '640px' : '100vw' }"
-    [style]="{width: '50vw'}">
-    <div class="container text-start">
-        <form [formGroup]="myForm">
-            <div class=" grid p-fluid row justify-content-start mb-3">
-                <div class="col-6">
-                    <label for=" nombre" class="form-label">Nombre</label>
-                    <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="nombre">
-                    <p-message *ngIf="nameField.errors?.['required']" severity="error" text="Este campo es obligatorio">
-                    </p-message>
-                </div>
-                <div class="col-6">
-                    <label for="capacidad" class="form-label">Capacidad</label>
-                    <input type="number" formControlName="capacity" class="form-control" id="capacity"
-                        aria-describedby="capacidad">
-                    <p-message *ngIf="capacityField.errors?.['required']" severity="error"
-                        text="Este campo es obligatorio">
-                    </p-message>
-                </div>
+<div class="modal fade" data-bs-backdrop="static" id="modalNuevaSolicitud" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{tituloModal}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="row justify-content-start mb-3">
-                <div class="col-6">
-                    <label for="location" class="form-label">Ubicación</label>
-                    <select class="form-select" name="location" formControlName="location">
-                        <option *ngFor=" let location of locations" [ngValue]="location">
-                            {{location.buildingName}}
-                        </option>
-                    </select>
-                    <p-message *ngIf="locationField.errors?.['required']" severity="error"
-                        text="Este campo es obligatorio">
-                    </p-message>
-                </div>
-                <div class="col-6">
-                    <label class="form-label">Estado</label>
-                    <p-inputSwitch formControlName="stateAx" id="stateAx" (onChange)="prueba($event)">
-                    </p-inputSwitch>
-                    <p-message *ngIf="statusField.errors?.['required']" severity="error"
-                        text="Este campo es obligatorio">
-                    </p-message>
-                </div>
+            <div class="container text-start">
+                <form [formGroup]="myForm">
+                    <div class=" grid p-fluid row justify-content-start mb-3">
+                        <div class="col-6">
+                            <label for=" nombre" class="form-label">Nombre</label>
+                            <input type="text" formControlName="name" class="form-control" id="name"
+                                aria-describedby="nombre">
+                            <p-message *ngIf="nameField.errors?.['required']" severity="error"
+                                text="Este campo es obligatorio">
+                            </p-message>
+                        </div>
+                        <div class="col-6">
+                            <label for="capacidad" class="form-label">Capacidad</label>
+                            <input type="number" formControlName="capacity" class="form-control" id="capacity"
+                                aria-describedby="capacidad">
+                            <p-message *ngIf="capacityField.errors?.['required']" severity="error"
+                                text="Este campo es obligatorio">
+                            </p-message>
+                        </div>
+                    </div>
+                    <div class=" grid p-fluid row justify-content-start mb-3">
+                        <div class="col-6">
+                            <label for="ubicacion" class="form-label">Ubicación</label>
+                            <p-dropdown id="school" formControlName="location" [options]="locations"
+                                formControlName="location" optionLabel="buildingName">
+                            </p-dropdown>
+                            <p-message *ngIf="locationField.errors?.['required']" severity="error"
+                                text="Este campo es obligatorio">
+                            </p-message>
+                        </div>
+                        <div class="col-6">
+                            <h6>Estado</h6>
+                            <p-inputSwitch formControlName="stateAx" id="stateAx" (onChange)="prueba($event)">
+                            </p-inputSwitch>
+                            <p-message *ngIf="statusField.errors?.['required']" severity="error"
+                                text="Este campo es obligatorio">
+                            </p-message>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancelar" (click)=borrarmodal()
+                    data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn-new" (click)=onSubmit()>Guardar</button>
+            </div>
+        </div>
     </div>
-    <ng-template pTemplate="footer">
-        <button type="submit" (click)=ocultarModal() class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn-new" (click)=onSubmit()>Guardar</button>
-    </ng-template>
-</p-dialog>
+</div>
 <div class="container text-center pb-3">
     <div class="row align-items-center">
         <div class="col-6 p-0">
             <div class="input-group">
                 <i class="input-group-text bi bi-search search"></i>
                 <input type="text" class="form-control search-input" name="searchText" placeholder="Buscar"
-                    aria-label="Username" [(ngModel)]="searchText">
+                    aria-label="Username">
                 <!--Poner función para limpiar el input-->
                 <button class="input-group-text close"><i class="bi bi-x-lg "></i></button>
                 <button type="button" class="input-group-text btn-filter">Filtrar</button>
@@ -78,7 +85,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="text-center" *ngFor="let classroom of classrooms  | filter:searchText">
+            <tr class="text-center" *ngFor="let classroom of classrooms ">
                 <td>{{classroom.name}}</td>
                 <td>{{classroom.location?.buildingName}}</td>
                 <td>{{classroom.capacity}}</td>
@@ -89,9 +96,10 @@
                 </td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <i type="button" class=" bi bi-trash mx-2 icon" (click)="delete(classroom.id!)"
+                        <i type="button" class=" bi bi-trash mx-2 icon" (click)="showModal(classroom.id!)"
                             data-bs-toggle="popover"></i>
-                        <i type="button" class="bi bi-pencil-square icon" (click)="findOne(classroom.id!)"></i>
+                        <i type="button" class="bi bi-pencil-square icon" data-bs-toggle="modal"
+                            data-bs-target="#modalNuevaSolicitud" (click)="findOne(classroom.id!)"></i>
                     </div>
                 </td>
             </tr>

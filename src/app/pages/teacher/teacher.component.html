@@ -47,7 +47,7 @@
                             <p-message *ngIf="idCardField.errors?.['required']" severity="error"
                                 text="Este campo es obligatorio">
                             </p-message>
-                            <p-message *ngIf="idCardField.errors?.['pattern']" severity="error"
+                            <p-message *ngIf="idCardField.errors?.['maxLength']" severity="error"
                                 text="Caracteres maximo 10">
                             </p-message>
                         </div>
@@ -73,16 +73,19 @@
                             </p-message>
                         </div>
                         <div class="col-6">
-                            <label for="telefono" class="form-label">Telefono</label>
+                            <label for="telefono" class="form-label">Teléfono</label>
                             <input type="telefono" class="form-control" id="telephone" aria-describedby="telefono"
                                 formControlName="telephone" required>
                             <p-message *ngIf="telephoneField.errors?.['required']" severity="error"
                                 text="Este campo es obligatorio">
                             </p-message>
+                            <p-message *ngIf="telephoneField.errors?.['maxLength']" severity="error"
+                                text="Caracteres minimos 10">
+                            </p-message>
                         </div>
                     </div>
                     <div>
-                        <label class="form-label">Estado</label>
+                        <h6>Estado</h6>
                         <p-inputSwitch formControlName="stateAx" id="stateAx" (onChange)="prueba($event)">
                         </p-inputSwitch>
                         <p-message *ngIf="statusField.errors?.['required']" severity="error"
@@ -92,7 +95,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn-cancelar" (click)=borrarmodal()
+                    data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn-new" (click)="onSubmit()">Guardar</button>
             </div>
         </div>
@@ -137,7 +141,7 @@
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <div>
-                            <i type="button" class=" bi bi-trash mx-2" (click)="delete(teacher.id!)"
+                            <i type="button" class=" bi bi-trash mx-2" (click)="showModal(teacher.id!)"
                                 data-bs-toggle="popover"></i>
                         </div>
                         <div>
