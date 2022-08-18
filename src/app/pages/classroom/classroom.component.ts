@@ -6,7 +6,7 @@ import { StatusModel } from 'src/app/models/status.model';
 import { ClassroomHttpService } from 'src/app/services/classroom-http.service';
 import { LocationHttpService } from 'src/app/services/location-http.service';
 import { StatusHttpService } from 'src/app/services/status-http.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-classroom',
   templateUrl: './classroom.component.html',
@@ -24,7 +24,6 @@ export class ClassroomComponent implements OnInit {
 
   display: boolean = false;
   tituloModal: string = 'Nuevo Aulas';
-  searchText: any;
   newForm(): FormGroup {
     return this.formBuilder.group({
       id: [null],
@@ -35,13 +34,24 @@ export class ClassroomComponent implements OnInit {
       stateAx: [false,],
     })
   }
-  // filtrar(event: Event) {
-  //   const filtro = (event.target as HTMLInputElement).value;
-  //   this.classrooms.filter = filtro.trim().toLowerCase();
-  // }
-  showModal() {
-    this.tituloModal = 'Nueva Aula'
-    this.display = true;
+  showModal(id: number) {
+    Swal.fire({
+      title: '¿Esta seguro de eliminar?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.delete(id)
+        Swal.fire('Eliminado Correctamente!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('No se pudo eliminar!', '', 'info')
+      }
+    })
+  }
+  borrarmodal() {
+    this.myForm.reset();
   }
 
   onSubmit() {
@@ -51,19 +61,18 @@ export class ClassroomComponent implements OnInit {
     if (this.myForm.valid) {
       if (this.idField.value) {
         this.update(this.idField.value, data);
+        Swal.fire('Editado Correctamente!', '', 'success')
       } else {
         delete data.id
         this.create(data);
+        Swal.fire('Creado Correctamente!', '', 'success')
       }
       this.myForm.reset();
     } else {
       alert('El formulario no es valido');
     }
   }
-  ocultarModal() {
-    this.display = false;
-    this.myForm.reset();
-  }
+
   ngOnInit(): void {
     this.findAll();
     this.loadLocations();
@@ -111,7 +120,6 @@ export class ClassroomComponent implements OnInit {
       this.myForm.patchValue(response.data);
     }
     )
-    this.showModal()
     this.tituloModal = 'Editar Aula'
   }
   create(data: any) {

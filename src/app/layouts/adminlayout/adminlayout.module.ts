@@ -28,7 +28,6 @@ import { TagModule } from 'primeng/tag';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import {TableModule} from 'primeng/table';
 import {PaginatorModule} from 'primeng/paginator';
-
 @NgModule({
   declarations: [
     CareerComponent,
