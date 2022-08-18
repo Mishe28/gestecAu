@@ -25,6 +25,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MessageModule } from 'primeng/message';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { TagModule } from 'primeng/tag';
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
+import {TableModule} from 'primeng/table';
+import {PaginatorModule} from 'primeng/paginator';
 @NgModule({
   declarations: [
     CareerComponent,
@@ -42,6 +45,7 @@ import { TagModule } from 'primeng/tag';
     SettingsComponent,
     UserProfileComponent,
     AssignmentComponent,
+    FilterPipe,
     TeacherDistributiveComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -55,6 +59,8 @@ import { TagModule } from 'primeng/tag';
     MessageModule,
     InputSwitchModule,
     TagModule,
+    TableModule,
+    PaginatorModule,
     RouterModule.forChild(AdminLayoutRoutes),
   ]
 })

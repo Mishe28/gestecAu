@@ -22,7 +22,7 @@
     <table class="table" aria-label="Table-request">
         <thead class="table-dark">
             <tr class="text-center">
-                <th scope="col">Código</th>
+                <th scope="col" pSortableColumn="id">Código <p-sortIcon field="id"></p-sortIcon></th>
                 <th scope="col">Curso</th>
                 <th scope="col">Asignatura</th>
                 <th scope="col">Cant. Horas</th>
@@ -31,12 +31,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let request of request" class="text-center">
+            <tr *ngFor="let request of request | slice: (page-1) * pageSize : page * pageSize " class="text-center">
                 <td>{{request.id}} </td>
                 <td>{{request.teacherDistribution?.course?.name}} </td>
                 <td>{{request.teacherDistribution?.subject?.name}} </td>
                 <td>{{request.totalHoursRequested}} </td>
-                <td>{{request.state?.name}} </td>
+                <td>{{request.state?.name | uppercase}} </td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <!--<i type="button" class="bi bi-eye icon" data-bs-toggle="modal" data-bs-target="#modalDetail" (click)="findOne(request.id!)"></i>-->
@@ -47,6 +47,7 @@
             </tr>
         </tbody>
     </table>
+    <ngb-pagination [collectionSize]="70" [page]="page" aria-label="Default pagination"></ngb-pagination>
 </div>
 
 <!--Modal Nueva Solitud-->
@@ -59,7 +60,7 @@
             </div> 
             <div class="modal-body">
                 <div class="container">
-                    <form [formGroup]="myForm">
+                    <form [formGroup]="myForm" id="form">
                         <div class="row">
                              <!--
                             <div class="col-md-2">
@@ -71,11 +72,17 @@
                                 </select>
                             </div>
                             -->
+                            <input type="hidden" [ngModel]="fechaActual! | date:'d/M/y'" formControlName="date" >
+                            <input type="hidden" [ngModel]="state" formControlName="state">
                             <div class="col-md-5">
                                 <label for="carrera" class="form-label">Carrera</label>
                                 <select class="form-select" name="" id="" formControlName="career">
+                                    <option selected >Selecciona</option>
                                     <option *ngFor="let career of careers " [ngValue]="career.id" >{{career.name}} </option>
                                 </select>
+                                <p class="error" *ngIf="careerField.errors?.['required']" severity="error"
+                                text="Este campo es obligatorio">
+                            </p>
                             </div>
                             <div class="col-md-5">
                                 <label for="distributivo" class="form-label" >Distributivo Docente</label>
@@ -92,11 +99,13 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="date2" class="form-label">Fecha Fin</label>
-                                <input  class="form-control"type="date" name="" id="endDate" formControlName="endDate">
+                                <input pInputText class="form-control"type="date" name="" id="endDate" formControlName="endDate">
+                                <p-message *ngIf="endDateField.errors?.['required']" severity="error" text="Este campo es obligatorio"></p-message>
                             </div>
                             <div class="col-md-4">
                                 <label for="course" class="form-label">Horas Semanales</label>
                                 <input class="form-control" type="number" name="" id="hour" formControlName="totalHoursRequested">
+                                <p-message *ngIf="hourField.errors?.['required']" severity="error" text="Este campo es obligatorio"></p-message>
                             </div>
                             <!--
                             <div class="col-md-4">
@@ -186,10 +195,3 @@
     </div>
 </div>
 
-<button>Fecha actual</button>
-
-<div>
-    <script>
-       
-    </script>
-    </div>

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './auth/not-found/not-found.component';
 import { AdminLayoutComponent } from './layouts/adminlayout/adminlayout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/authlayout/authlayout/authlayout.component';
 import { CoordinatorlayoutComponent } from './layouts/coordinatorlayout/coordinatorlayout/coordinatorlayout.component';
@@ -44,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'dashboard'
+    component: NotFoundComponent
   }
 ];
 
