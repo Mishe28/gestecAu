@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { ResponseModel } from '../models/response.model';
+import { CareerModel } from '../models/career.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,26 +16,23 @@ export class CareerHttpService {
   constructor(private httpClient: HttpClient) {
   }
 
-  findAll(): Observable<any> {
-    return this.httpClient.get(this.HOST)
+  findAll() {
+    return this.httpClient.get<ResponseModel>(this.HOST)
   }
 
-  findOne(id: number): Observable<any> {
-    return this.httpClient.get(`${this.HOST}/${id}`)
+  findOne(id: number) {
+    return this.httpClient.get<ResponseModel>(`${this.HOST}/${id}`)
   }
 
-  create(payload: any): Observable<any> {
-    const url = `${this.HOST}`;
-    return this.httpClient.post(url, payload);
+  create(payload: CareerModel) {
+    return this.httpClient.post<ResponseModel>(this.HOST, payload);
   }
 
-  update(id: number, payload: any): Observable<any> {
-    const url = `${this.HOST}/${id}`;
-    return this.httpClient.put(url, payload);
+  update(id: number, payload: CareerModel) {
+    return this.httpClient.put<ResponseModel>(`${this.HOST}/${id}`, payload);
   }
 
-  delete(id: number): Observable<any> {
-    const url = `${this.HOST}/${id}`;
-    return this.httpClient.delete(url);
+  delete(id: number) {
+    return this.httpClient.delete<ResponseModel>(`${this.HOST}/${id}`);
   }
 }

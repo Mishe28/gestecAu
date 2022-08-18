@@ -1,7 +1,10 @@
+import { StatusModel } from "./status.model";
+
 export interface CareerModel {
     id?: number;
     name?: string;
     durationTime?: string;
-    images?: string
-
+    image?: string;
+    createdAt?: string
+    state?: StatusModel;
 }
