@@ -8,8 +8,9 @@ import { ElementsModule } from './elements/elements.module';
 import { AdminLayoutComponent } from './layouts/adminlayout/adminlayout/admin-layout.component';
 import { RouterModule } from '@angular/router';
 import { CoordinatorlayoutComponent } from './layouts/coordinatorlayout/coordinatorlayout/coordinatorlayout.component';
-import {DialogModule} from 'primeng/dialog';
+import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminLayoutComponent,
     AuthLayoutComponent,
     CoordinatorlayoutComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })
