@@ -34,7 +34,7 @@
 </div>
 <!-- Tabla Index -->
 <div>
-    <table class="table" aria-label="Table-request">
+    <table class="table text-center" aria-label="Table-request">
         <thead class="table-dark">
             <tr class="text-center">
                 <th scope="col">Aula</th>
@@ -47,19 +47,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
+            <tr *ngFor="let sc of scheduleConfiguration">
+                <td>{{sc.classroom?.name}} </td>
+                <td>{{sc.request?.teacherDistribution?.course?.name}} </td>
+                <td>{{sc.request?.teacherDistribution?.subject?.name}}</td>
+                <td>{{sc.request?.teacherDistribution?.teacher?.name}}</td>
+                <td>{{sc.request?.state?.name}}</td>
                 <td class="text-center">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <i type="button" class="bi bi-eye icon" data-bs-toggle="modal"
-                            data-bs-target="#modalDetail"></i>
                         <i type="button" class="bi bi-pencil-square mx-2 icon" data-bs-toggle="modal"
-                            data-bs-target="#modalNuevaSolicitud"></i>
-                        <i type="button" class=" bi bi-trash mx-2 icon " data-bs-toggle="popover"></i>
+                            data-bs-target="#modalNuevaSolicitud" (click)="findOne(sc.id!)"></i>
+                        <i type="button" class=" bi bi-trash mx-2 icon " data-bs-toggle="popover" (click)="delete(sc.id!)"></i>
                     </div>
                 </td>
             </tr>
@@ -206,6 +204,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 <!-- Modal Configurar Horas -->
 <div class="modal fade" data-bs-backdrop="static" id="modalConfigHours" tabindex="-1"

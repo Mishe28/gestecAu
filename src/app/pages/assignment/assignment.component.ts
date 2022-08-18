@@ -59,6 +59,7 @@ export class AssignmentComponent implements OnInit {
       this.loadCourses();
       this.loadSchoolYear();
       this.loadRequest();
+      this.loadLevels();
     }
 
   newForm(): FormGroup {
@@ -86,6 +87,14 @@ export class AssignmentComponent implements OnInit {
     this.careerHttpService.findAll().subscribe(
       Response => {
         this.careers = Response.data;
+      }
+    )
+  }
+
+  loadLevels() {
+    this.levelHttpService.findAll().subscribe(
+      Response => {
+        this.levels = Response.data;
       }
     )
   }
@@ -151,25 +160,25 @@ export class AssignmentComponent implements OnInit {
   }
 
   findOne(id: number) {
-    this.requestHttpService.findOne(id).subscribe(response => {
+    this.scheduleConfigurationService.findOne(id).subscribe(response => {
       this.myForm.patchValue(response.data);
-      this.request = response.data;
+      this.scheduleConfiguration = response.data;
     });
   }
   create() {
-    this.requestHttpService.create(this.myForm.value).subscribe(response => {
+    this.scheduleConfigurationService.create(this.myForm.value).subscribe(response => {
       this.findAll()
     });
   }
 
   update() {
-    this.requestHttpService.update(this.idField.value, this.myForm.value).subscribe(response => {
+    this.scheduleConfigurationService.update(this.idField.value, this.myForm.value).subscribe(response => {
       this.findAll();
     });
   }
 
   delete(id: number) {
-    this.requestHttpService.delete(id).subscribe(response => {
+    this.scheduleConfigurationService.delete(id).subscribe(response => {
       this.findAll();
     });
   }
