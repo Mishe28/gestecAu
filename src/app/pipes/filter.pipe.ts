@@ -4,8 +4,10 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-  transform(value: any, arg: any[]): unknown {
+  transform(value: any, arg: any[]): any {
+
     const resultadoBuscar = [];
+    
     for (const classroom of value) {
       if (classroom.name.indexOf(arg) > -1) {
         resultadoBuscar.push(classroom);

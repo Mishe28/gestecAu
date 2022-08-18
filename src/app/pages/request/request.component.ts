@@ -21,6 +21,9 @@ import { TeacherDistributiveHttpService } from 'src/app/services/teacher-distrib
   styleUrls: ['./request.component.css']
 })
 export class RequestComponent implements OnInit {
+  page=1;
+  pageSize = 10;
+  titleModule = 'Solicitudes';
   request: RequestModel[] = [];
   teacherDistributive: TeacherDistributionModel[] = [];
   careers: CareerModel[] = [];
@@ -29,6 +32,8 @@ export class RequestComponent implements OnInit {
   courses: CourseModel[] = [];
   schoolYear: SchoolYearModel[] = [];
   myForm: FormGroup;
+  fechaActual = new Date();
+  state = 4;
   
   constructor(
     private requestHttpService: RequestHttpService, 
@@ -54,15 +59,14 @@ export class RequestComponent implements OnInit {
 
   newForm(): FormGroup {
     return this.formBuilder.group({
-      date:['now()'],
+      date:[null],
       id: [null],
       totalHoursRequested: [null, [Validators.required]],
-      //schoolYear: [null, [Validators.required]],
       startDate: [null,[Validators.required]],
       endDate: [null,[Validators.required]],
       career: [null,[Validators.required]],
       teacherDistribution: [null,[Validators.required]],
-      state:[4],
+      state:[null],
     })
   }
 
@@ -162,6 +166,10 @@ export class RequestComponent implements OnInit {
     });
   }
 
+  stateAct(){
+    this.fechaActual = new Date();
+  }
+
   get idField() {
     return this.myForm.controls['id'];
   }
@@ -180,8 +188,17 @@ export class RequestComponent implements OnInit {
   get hourField() {
     return this.myForm.controls['totalHoursRequested'];
   }
-  /*get schoolYearField() {
-    return this.myForm.controls['schoolYear'];
-  }*/
+
+  get dateField() {
+    return this.myForm.controls['date'];
+  }
+
+  get stateField() {
+    return this.myForm.controls['state'];
+  }
+
+
+  
+
 
 }

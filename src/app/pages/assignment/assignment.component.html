@@ -1,6 +1,13 @@
-<div class="text-end mt-3">
-    <button class="btn-import" data-bs-toggle="modal" data-bs-target="#modalConfigHours">Configurar Horas</button>
-    <button class="btn-new" data-bs-toggle="modal" data-bs-target="#modalSolicitud">Solicitudes</button>
+<div class="row">
+    <div class="col-md-6">
+        <h5 class="title">{{title}} </h5>
+    </div>
+    <div class="col-md-6">
+        <div class="text-end mt-3">
+            <button class="btn-import" data-bs-toggle="modal" data-bs-target="#modalConfigHours">Configurar Horas</button>
+            <button class="btn-new" data-bs-toggle="modal" data-bs-target="#modalSolicitud">Solicitudes</button>
+        </div>
+    </div>
 </div>
 <br>
 <div class="text-center mb-s mb-3">
@@ -8,16 +15,16 @@
         <div class="p-0">
             <div class="row">
                 <div class="col-md-3">
-                    <select class="form-select col-2" name="" id="">
+                    <!-- <select class="form-select col-2" name="" id="">
                         <option selected>Carrera</option>
                         <option *ngFor="let career of careers " [ngValue]="career.id" >{{career.name}} </option>
-                    </select>
+                    </select> -->
                 </div>
                 <div class="col-md-3">
-                    <select class="form-select" name="" id="">
+                    <!-- <select class="form-select" name="" id="">
                         <option selected>Nivel</option>
                         <option *ngFor="let level of levels " [ngValue]="level.id" >{{level.name}} </option>
-                    </select>
+                    </select> -->
                 </div>
                 <div class="col-md-6">
                     <div class="input-group ">
@@ -47,16 +54,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let sc of scheduleConfiguration">
-                <td>{{sc.classroom?.name}} </td>
+            <tr *ngFor="let sc of scheduleConfiguration ">
+                <td>{{sc.classroom?.name | uppercase}} </td>
                 <td>{{sc.request?.teacherDistribution?.course?.name}} </td>
                 <td>{{sc.request?.teacherDistribution?.subject?.name}}</td>
                 <td>{{sc.request?.teacherDistribution?.teacher?.name}}</td>
-                <td>{{sc.request?.state?.name}}</td>
+                <td>{{sc.request?.state?.name | uppercase}}</td>
                 <td class="text-center">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <i type="button" class="bi bi-pencil-square mx-2 icon" data-bs-toggle="modal"
-                            data-bs-target="#modalNuevaSolicitud" (click)="findOne(sc.id!)"></i>
+                            data-bs-target="#modalNuevaAsignacion" (click)="findOne(sc.id!)"></i>
                         <i type="button" class=" bi bi-trash mx-2 icon " data-bs-toggle="popover" (click)="delete(sc.id!)"></i>
                     </div>
                 </td>
@@ -65,10 +72,8 @@
     </table>
 </div>
 
-<button class="btn-new" data-bs-toggle="modal" data-bs-target="#modalNuevaAsignación">Abre Asignación</button>
-
 <!-- Modal Nueva Asignación -->
-<div class="modal fade" data-bs-backdrop="static" id="modalNuevaAsignación" tabindex="-1"
+<div class="modal fade" data-bs-backdrop="static" id="modalNuevaAsignacion" tabindex="-1"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -113,19 +118,19 @@
                             <div class="col-md-3">
                                 <label for="date1" class="form-label">Aula</label>
                                 <select class="form-select" name="" id="">
-                                    <option selected>Aula</option>
+                                    <option *ngFor="let classroom of classrooms" [ngValue]="classroom.id">{{classroom.name}} </option>
                                 </select>
                             </div>
                             <div class="col-md-2">
                                 <label for="date2" class="form-label">Día</label>
                                 <select class="form-select" name="" id="">
-                                    <option selected>Día</option>
+                                    <option *ngFor="let day of days" [ngValue]="day.id">{{day.name}} </option>
                                 </select>
                             </div>
                             <div class="col-md-5">
                                 <label for="course" class="form-label">Hora</label>
                                 <select class="form-select" name="" id="">
-                                    <option selected>Hora</option>
+                                    <option *ngFor="let hr of hours" [ngValue]="hr.id">{{hr.hour}} </option>
                                 </select>
                             </div>
                         </div>
@@ -231,8 +236,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>...</td>
+                            <tr *ngFor="let career of careers">
+                                <td>{{career.name}} </td>
                                 <td><input class="form-control num-hour" type="number" name="" id=""></td>
                                 <td><input class="form-control num-hour" type="number" name="" id=""></td>
                                 <td><input class="form-control num-hour" type="number" name="" id=""></td>
@@ -253,7 +258,7 @@
 <!-- Modal Solicitudes -->
 <div class="modal fade" data-bs-backdrop="static" id="modalSolicitud" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Solicitud de Asignación de Aula</h5>
